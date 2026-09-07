@@ -1,0 +1,471 @@
+第26卷第7期
+2023 年7月 软件工程 SOFTWARE ENGINEER ING Vol.26 No.7
+Jul. 2023
+文章编号:2096-1472(2023)-07-12-04 DOI:10.19644/j.cnki.issn2096-1472.2023.007.003
+基于 GA-BP 的古代玻璃类别预测与风化程度测定模型研究
+曹宇轩,隋国荣
+(上海理工大学光电信息与计算机工程学院,上海 200093)
+2035060509@ st.usst.edu.cn; suigr@usst.edu.cn
+摘 要:为研究不同类别的古代玻璃的内在化学成分与自身风化程度的关系,建立了古代玻璃类别预测及风化
+程度测定模型。首先,利用 GA-BP 神经网络,以高收敛速度及 97.8%的高拟合优度准确预测样品玻璃的真实类别,
+同时克服传统 BP 神经网络容易陷入局部最小值的问题。其次,根据样品类别的不同,分别对其采用主成分分析降
+维和熵权法,得到样品玻璃的未风化程度指数,其中高钾玻璃的 1 5 号样品和铅钡玻璃的 37 号样品受损较严重。实
+验结果显示:该模型可以很好地测算古代玻璃的相关参数,可被广泛应用于考古行业的玻璃文物参数分析与测算
+工作。
+关键词:古代玻璃分类;GA-BP 神经网络;主成分分析降维;熵权法
+中图分类号:TP319 文献标识码:A
+Research on Ancient Glass Composition Prediction and Weathering Degree
+Measurement Model Based on GA-BP
+CAO Yuxuan, SUI Guorong
+(School of Optical-
+Electrical and Computer Engineering,
+University of Shanghai for Science and Technology,
+Shanghai 200093,
+China)
+2035060509@ st.usst.edu.cn; suigr@usst.edu.cn
+Abstract:In order to study the relationship between the intrinsic chemical composition of different types of
+ancient glass and their own degree of weathering, this paper proposes to establish a model for predicting ancient glass
+composition and measuring their weathering degree. Firstly, GA-BP (Genetic Algorithm-Backpropagation) uses neural
+network to accurately predict the true composition of sample glass with high rate of convergence and high goodness of
+fit of 97.8% , while overcoming the problem that traditional BP neural network is prone to fall into local minimum.
+Secondly, according to the different types of samples, dimensionality reduction by principal component analysis and
+entropy weight method are used to obtain the unweathered degree index of the sample glass. Among them, sample 15 of
+high potassium glass and sample 37 of lead barium glass are severely damaged. The experimental results show that this
+model can effectively calculate the relevant parameters of ancient glass and can be widely applied in the analysis and
+calculation of glass cultural relics parameters in the archaeological field.
+Keywords: classification of ancient glass; GA-BP neural network; dimensionality reduction by principal
+component; entropy weight method
+0 引言(Introduction)
+研究并确定文物成分一直是考古和文化遗产领域的难题,
+在文物的挖掘过程,由于缺乏相关的信息,以及受环境和人为
+操作等多方面因素的影响,不可避免地出现了文物损坏现象,
+导致古代文物携带的历史信息缺失。因此,通过现有文物,快
+速、准确地识别文物的某些特定参数,对考古和文物保护工作
+第26卷第7期 曹宇轩等:基于 GA-BP 的古代玻璃类别预测与风化程度测定模型研究
+具有重要的价值。
+玻璃的生产历史悠久,最早可追溯至公元前 2600 年左右
+的美索不达米亚文明,是人类历史中重要的历史文物。玻璃最
+常见的风化机理是周围环境的水分子与玻璃网结构键之间的
+反应。这一现象使暴露在自然环境中的古代玻璃的光学、化学
+性质产生不可逆的变化[1]
+。宋代酱釉器及登封南洼遗址出土
+的白色项链等玻璃质的文化财产都受到严重的风化影响[2-3]
+。
+因此,古代玻璃的风化,不仅影响人类对古代文明的研究,还侵
+害了人类的文明财产。现阶段,保护古代玻璃方法亟待创新,目
+前尚未提出一种能对古代玻璃风化水平进行定量分析的模型。
+为此,本文根据古代玻璃的特点,建立一种全新的模型,首先使
+用 GA-BP 神经网络对玻璃样品的类别实现较高准确率的分类,
+其次利用主成分分析降维法对高维数据进行降维,最后结合熵
+权法实现对不同玻璃样本风化指数的数值评价。
+1 原理与方法(Principles and methods)
+1.1 遗传算法结合 BP 神经网络(GA-BP)预测玻璃
+类型
+由于玻璃类型与其成分间存在的关系不是简单的线性关
+系,因此考虑使用 BP 神经网络处理该非线性问题。BP 神经网
+络的每一层都由许多的神经细胞组成。每层神经元接收来自
+前一层的输入,并通过传递函数将计算结果输出到下一层[4]
+。
+假设输入层的节点数为
+m ,输入层的输入为
+x i
+input ,隐藏层
+的节点数为
+n ,输出层的节点数为
+q ,输入层到隐藏层的权重为
+ωij ,隐藏层到输出层的权重为
+ωj k ,输入层到隐藏层的偏移量
+为
+a j ,隐藏层到输出层的偏移量为
+b k ,学习速率为
+η,激励函数
+为
+g (
+x )。那么,隐藏层
+H j 的输出如下:H j =
+g (
+∑
+m
+i =1
+ωij x i
+input +
+a j ) (1)
+输出层输出的
+x k
+output 如下:x k
+output = ∑
+n
+j =1
+H jωj k +
+b k (2)
+计算误差如下:E = 1
+q ∑
+q
+k =1
+(
+Yk -
+x k
+output )2 (3)
+其中,
+i =1,2,…,
+m ,
+j =1,2,…,
+n ,
+k =1,2,…,
+q ;
+i 为输入层编
+号,
+m 为输入层节点数,
+j 为隐藏层编号,
+n 为隐藏层节点数,
+k
+为输出层编号,
+q 为输出层节点数,
+Yk 为期望输出。神经网络
+示意结构如图 1 所示。
+图 1 神经网络示意结构
+Fig.1 Structure schematic diagram of neural network
+如果输出层的期望输出值与实际输出值的误差大于预定
+值,则误差将反向传播。通过调整各层的连接权重和阈值,逐
+渐减小计 算 值 与 实 际 值 之 间 的 误 差,直 到 误 差 达 到 预 定 要
+求[5]
+。但是,BP 神经网络在训练过程容易陷入局部最小值,为
+克服这一缺陷,本文使用遗传算法优化 BP 神经网络[6]
+。
+遗传算法是通过模仿遗传进化和生物的自然选择而发展
+起来的一种优化算法,其主要特征是基于种群的进化,适者生
+存,具有定向性和随机性,并且不依赖梯度信息,它包括编码、
+选择、交叉、突变和解码操作 5 个过程。
+本模型利用遗传算法的全局寻优搜索功能获得每一次的
+最优种群,接着利用 BP 神经网络的局部寻优特征,反向寻得最
+优值[7]
+。
+本文选取三层结构的神经网络,包括输入层、隐藏层和输
+出层,每层包含一定数量的神经元。对于基于 GA-BP 神经网
+络的玻璃类别预测模型,影响因素包含 14 种化学成分的含量。
+因此,设置输入层节点数为 14,即
+m = 14,样本数量为 6 9。因
+为仅研究玻璃的类型,所以输出层节点数为 1,即
+q =1。本模
+型将预测输出与期望输出的平均误差值
+Error 作为个体的适
+应度函数,其定义如公式(4)所示:
+Error =
+∑
+6 9
+t =1
+|
+x t
+output -
+x t
+train |
+6 9 (4)
+其中,
+x train 为样本的实际玻璃类别,
+t 为样本编号。
+Error 越
+大,该个体的适应度值越大,则该个体越容易在种群迭代的过
+程中被淘汰。通过遗传算法不断迭代,最终找到最优的隐藏层
+数量。
+从图 2 可以看到,在种群迭代次数为 41 时,网络迎来最优
+适应度,其隐藏层的数量为 8,即
+j =8。
+图 2 种群迭代次数与最优适应度关系
+Fig.2 The relationship between the population generation
+number and optimal fitness
+31
+软件工程 2023年7月
+本文所提分类模型首先将样本数据随机分散,然后选择
+50 个样本作为训练样本,10 个样本作为测试样本训练神经网
+络,9 个样本作为验证集,其中 6 9 个样本分为高钾玻璃和铅钡
+玻璃。在实验过程中通过调整特征向量、激活函数、训练算法、
+学习速度等,获得最佳的实验结果,达到最高的准确率。本文
+使用 8 个隐藏层构建神经网络模型。隐藏神经元传输函数选
+择
+logsig 函数,输出层传输函数选择
+tansig 函数。训练神经
+网络的算法使用 trainlm 算法。学习速度设置为 0.1。训练目
+标误差设置为 0.000 1。最终通 过 Matlab R2020a 软 件 搭 建
+GA-BP 神经网络仿真平台,并得到以下实验结果。
+从图 3 可以看出,网络训练迭代至第 7 代时,训练集误差满足
+目标误差条件,此时验证集均方误差最小,仅为 0.000 521 22,同时
+该网络收敛速度快,不存在锯齿现象。
+图 3 网络训练次数与均方误差
+Fig.3 Network training times and mean square error
+为衡量 GA-BP 神经网络在各个数据集中期望输出与实际
+输出的偏差,本文引入拟合优度
+R 的概念,其定义如公式(5 )
+所示。拟合优度
+R 是指回归直线对期望输出的拟合程度,其
+最大值为 1 且其值越接近 1,说明回归直线对期望输出的拟合
+程度越好;反之,说明回归直线对期望输出的拟合程度越差,即
+训练的 GA-BP 神经网络质量越差。
+R = 1 -
+∑
+t =1
+(
+x t
+train -
+x t
+output )2
+∑
+t =1
+(
+x t
+train -
+x train )2
+(5)
+通过图 4 可以看出,网络训练集、测试集、验证集以及总数
+据集拟合优度均高于 97.8%,证明该神经网络的优越性。
+图 3 和图 4 证明该网络能够成功区分训练集玻璃的类别,
+并具有较高的准确率。
+1.2 主成分分析降维
+主成分分析(PCA),被视为经典数据降维方法,在模式识
+别和计算机视觉领域得到广泛的应用。PCA 是一种多变量统
+(a)训练集 (b)验证集
+(c)测试集 (d)总数据集
+图 4 各数据集拟合优度
+Fig.4 Goodness fit of every data set
+计技术,根据捕获的所有信息,可将数据量减少至较小的数量,
+并提取特征信息[8]
+;其基本思想是重新组合原始相关索引
+X 1 ,
+X 2 ,…,
+X k (该矩阵已进行数据中心化处理),形成少量不相关
+的综合指标。综合指标应最大限度地反映原有变量所代表的
+信息,并能保证新指标相互独立,从而尽可能多地保留原始变
+量中所包 含 的 信 息,以 达 到 数 据 降 维 和 稀 释 数 据 信 息 的 目
+的[9]
+。如果
+F 1 ,
+F 2 ,…,
+F n 用于表示原始变量的
+n 个主成分,
+即可得到:
+F 1 =
+a 1 1
+X 1 +
+a 1 2
+X 2 +…+
+a 1
+k X k
+F 2 =
+a 2 1
+X 1 +
+a 22
+X 2 +…+
+a 2
+k X k
+︙
+F n =
+a n 1
+X 1 +
+a n 2
+X 2 +…+
+a nk X k
+􀮠
+􀮢
+􀮡
+􀪁􀪁􀪁 􀪁􀪁􀪁
+(6)
+随后,本文将分别计算铅钡玻璃和高钾玻璃中各种化学成
+分的贡献率,并进行降序排序,同时依次算出每种化学成分对
+主成分的累计贡献率。为尽可能对数据进行降维以及保存数
+据的信息量,本文将累计贡献率的最低标准划分为 90%。
+由图 5 可知,对于铅钡玻璃而言,其 14 种化学成分降维至
+9 个主成分即满足累计贡献率达到 90%的条件。对于高钾玻
+璃而言,仅需要 6 个主成分即可满足条件。
+1.3 熵权法确定风化程度
+决策者的主观考虑会造成指数权重的偏差,为避免这类干
+扰,产生符合事实的结果,使用基于指标固有信息的客观权重
+法确定权重[10]
+,因此选择熵权法(EWM)模型,其模型实现过
+程如下。
+41
+第26卷第7期 曹宇轩等:基于 GA-BP 的古代玻璃类别预测与风化程度测定模型研究
+图 5 累计贡献率阶梯图
+Fig.5 Ladder diagram of cumulative contribution rate
+步骤 1:将经过 PCA 降维后的主成分
+F 1 ,
+F 2 ,…,
+F n 正向
+化为
+F *
+1 ,
+F *
+2 ,…,
+F *
+n ,对于正向指标:
+F *
+ij =
+F ij -min(
+F j ) (7)
+对于负向指标:F *
+ij =max(
+F j )-
+F ij (8)
+假设各指标数据标准化后为
+Y 1 ,
+Y 2 ,…,
+Yn 。
+步骤 2:将
+Yij 进行数据归一化处理,处理过程如公式(9 )
+所示: p ij =
+Yij
+∑
+m
+i =1
+Yij
+(9)
+其中,
+m 为样本数量。
+步骤 3:计算所有样本指标的熵值
+E ,范围在 0~1,其计算
+公式如下: E j = - 1
+ln
+m ∑
+m
+i =1
+p ij ln
+p ij (10)
+步骤 4:具有较小熵值的指标表示大量信息,即指标具有
+更高的重要性且应当具有更高的权重。因此,使用公式(1 1 )计
+算熵权重
+ωe : ωe (
+j )= 1 -
+E j
+∑
+n
+j =1
+(1 -
+E j )
+(1 1)
+步骤 5:利用熵权重
+ωe 计算得分,将其转化为百分制,并
+定义其为未风化程度指数
+Score 。
+Score 计算公式如下:
+Score i =
+∑
+n
+j =1
+ωe (
+j )×
+Yij
+max(
+Score ) × 100 (1 2)
+其中,
+n 为主成分数量。
+2 模型实验(Model experiments)
+根据模型计算,分别得到不同材质玻璃的不同样本的未风
+化程度指数。
+对高钾玻璃而言,在现有的玻璃样品库中,试验发现风化
+玻璃与未风化玻璃的未风化程度指数分界点,所有风化玻璃的
+未风化程度指数均小于 20,并且 1 5 号样本的风化最严重,仅为
+9.709,其结果如图 6 所示。
+图 6 高钾玻璃未风化程度
+Fig.6 Unweathering degree of high potassium glass
+对于铅钡玻璃而言,试验也能观察得到风化玻璃与未风化
+玻璃的未风化程度指数分界点在 5 3,并且第 37 号样本的风化
+程度最严重,未风化程度指数仅为 2 1.404,其结果如图 7 所示。
+图 7 铅钡玻璃未风化程度
+Fig.7 Unweathering degree of lead barium glass
+由图 7 中的结果可知,随着玻璃测量样本数量的不断增
+加,模型越精确。
+3 结论(Conclusion)
+本文建立 GA-BP 优化模型,通过选择合适的隐藏层,极大
+程度地降低神经网络的预测误差,从而可以根据 14 种化学物
+质的含量精确预测样本的玻璃类型。同时,利用 PCA 降维,配
+合熵权法,对每个样本的风化程度进行评分,并进一步划分高
+风化程度分数线。因此,对于挖掘出土的古代文物,可利用无
+51
+软件工程 2023年7月
+损检测手段在第一时间分析其化学成分,并针对风化严重的区
+域做出针对性的保护措施。
+本模型在大样本数量的环境下,不仅可以评估当前环境是
+否会进一步加剧文物的风化程度,也能通过未风化程度指数,
+帮助考古学家在挖掘文物的过程中提前制定技术路线和设置
+技术参数。此外,本模型应用于在建筑行业时,配合强化风化
+条件,可以得到一个警戒风化分数并定期对玻璃的风化程度进
+行量化比较,确保建造结构的安全性。
+参考文献(References)
+[1]AMMA S,KIM S H,PANTANO C G.Analysis of water
+and hydroxyl species in soda lime glass surfaces using At-
+tenuated Total Reflection (ATR )-IR Spectroscopy [J ].
+Journal of the American Ceramic Society,201 6,9 9 (1 ):
+1 28-1 34.
+[2]DIND R,LI W,YANG Z,et al.Degradation mechanism of
+a sauce-glazed ware of the Song dynasty salvaged out of the
+water at Dalian island wharf:part I the effect of the sur-
+face-attached composite coagula [J ]. Materials,MDPI,
+2023,1 6(3):1-22.
+[3]崔天兴,张继华,韩国河.登封南洼遗址出土的宋代玻璃饰
+品[J].文物保护与考古科学,2020,32(2):5 1-5 6.
+[4]万芯炜,王晶,杨辉,等.BP 神经网络结合粒子群优化卡尔
+曼滤波的 MEMS 陀螺随机误差补偿方法[J].兵工学报,
+2023,44(2):5 5 6-5 65.
+[5]WU Y,FENG J.Development and application of artificial
+neural network [J ]. Wireless Personal Communications,
+201 8,102(2):1 645-1 65 6.
+[6]蒋美云.基于模拟退火算法优化的 BP 神经网络预测模
+型[J].软件工程,201 8,2 1(7):3 6-38.
+[7]JIANG Y,ZHANG F.Study on bp neural network optimi-
+zation by improved decay parameter genetic algorithm[J].
+Journal of Physics: Conference Series,IOP Publishing,
+2020,1 62 1(1):1-8.
+[8]王沛,陈劲杰.基于 PCA 主成分分析和 K-means 算法的汽
+车行驶 工 况 数 据 量 化 研 究 [J].软 件 工 程,2020,23 (3 ):
+1 7-2 1.
+[9]王国彬,武晗,白杨,等.基于主成分分析降维和支持向量
+机回归的 短 期 负 荷 预 测 方 法 研 究 [J].吉 林 电 力,2020,
+48(4):7-10.
+[10]王沼翔,葛琳.基于机器学习的信贷风险量化与决策分
+析[J].软件工程,202 1,24(1 2):40-44,34.
+作者简介:
+曹宇轩(2001-),男,本科生.研究领域:光电传感与检测.
+隋国荣(1 974-),男,博士,副教授.研究领域:超快光电器件,光
+电传感与检测.
+(上接第 1 1 页)
+实验表明本文提出的方法与传统方法相比获得了不错的
+提升效果,可为火灾应急知识的获取提供精确的查询手段。但
+是,本文对多意图问句的理解和路径生成策略的研究较为欠
+缺,本文的路径排序模板较难覆盖多意图的复杂问句。此外,
+本文没有对含有限制条件的问句进行约束,因此进一步提升问
+答模型的性能指标、响应速度,并侧重于复杂问句的理解和约
+束,是研究人员接下来的研究目标。
+参考文献(References)
+[1]国家消防救援局.202 1 年消防接处警创新高,扑救火灾
+74.5 万起[EB/OL].(2022-01-20)[2022-10-05].https:∥
+www.1 1 9.gov.cn/gk/sj tj/2022/26442.shtml.
+[2]王智悦,于清,王楠,等.基于知识图谱的智能问答研究综
+述[J].计算机工程与应用,2020,5 6(23):1-1 1.
+[3]ZHENG W G,YU X J,ZOU L,et al.Question answering
+over knowledge graphs:question understanding via tem-
+plate decomposition[J].Proceedings of the VLDB Endow-
+ment,201 8,1 1(1 1):1 373-1 386.
+[4]高留杰,赵文,张君福,等.G2S:基于语义块的知识图谱问
+答语义解析[J].电子学报,202 1,49(6):1 1 32-1 141.
+[5]GOMES J,DE MELLO R C,STROELE V,et al.A study
+of approaches to answering complex questions over knowl-
+edge bases[J].Knowledge and Information Systems,2022,
+64(1 1):2849-2881.
+[6]HU S,ZOU L,XU YU J,et al.Answering natural lan-
+guage questions by subgraph matching over knowledge
+graphs[C]∥IEEE.201 8 IEEE 34th International Confer-
+ence on Data Engineering. Piscataway: IEEE,201 8:
+1 81 5-1 81 6.
+[7 ] CHEN T Q,GUESTRIN C. XGBoost:A scalable tree
+boosting system[C]∥ACM.Proceedings of the 22nd ACM
+SIGKDD International Conference on Knowledge Discovery
+and Data Mining.New York:Association for Computing
+Machinery,201 6:785-794.
+[8]汪洲,侯依宁,汪美玲,等.基于特征融合的中文知识库问
+答方 法 [EB/OL].(2020-1 1-1 5 )[2022-1 2-01 ].https:∥
+sigkg.cn/ccks2020/? page_id=700.
+[9]张鸿志,李如寐,王思睿,等.基于预训练语言模型的检索-
+匹配式知识图谱问答系统[EB/OL].(2020-1 1-1 5 )[2022-
+1 2-01].https:∥sigkg.cn/ccks2020/? page_id=700.
+作者简介:
+潘 茹(1 9 97-),女,硕士生.研究领域:事故应急决策.
+查 俊(1 986-),男,博士,副研究员.研究领域:公共安全.本
+文通信作者.
