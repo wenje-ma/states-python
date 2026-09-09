@@ -27,3 +27,4 @@
 *.synctex*
 *.pyg
 *-blx.bib
+__pycache__/
