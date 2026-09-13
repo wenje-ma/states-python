@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-问题 2 论文插图生成（图 6-1 / 6-2 / 6-3）
+问题 2 论文插图生成（矢量 PDF，图内不带编号，编号由论文 caption 命令自动给出）
 ================================================
-图 6-1：随机森林特征重要性条形图（6.1 分类规律，前 7 位核心成分高亮）
-图 6-2：高钾、铅钡玻璃亚类划分散点图（6.2，核心成分标准化后 PCA 投影，
+特征重要性图：随机森林特征重要性条形图（6.1 分类规律，前 7 位核心成分高亮）
+亚类划分图：高钾、铅钡玻璃亚类划分散点图（6.2，核心成分标准化后 PCA 投影，
         按 K-means++ 亚类着色并标注质心）
-图 6-3：K-means++ 聚类评估图（6.2，SSE 柱状 + 轮廓系数折线随 K 变化，
+聚类评估图：K-means++ 聚类评估图（6.2，SSE 柱状 + 轮廓系数折线随 K 变化，
         标注推荐类数）
 
 输入：results/q2_1_特征重要性表.csv、results/q2_2_聚类评估表.csv、
       results/q2_2_亚类划分.csv、cleaned/表单2_填0版_全量58.csv
-输出：3-论文/figures/fig_q2_importance.png、fig_q2_cluster.png、fig_q2_elbow.png
+输出：3-论文/figures/fig_q2_importance.{svg,pdf}、fig_q2_cluster.{svg,pdf}、fig_q2_elbow.{svg,pdf}
 """
 
 import os
@@ -66,7 +66,7 @@ def fig_importance():
                 f"{v:.3f}", va="center", fontsize=8)
     ax.set_xlabel("特征重要性")
     ax.set_ylabel("化学成分")
-    ax.set_title("图6-1  随机森林特征重要性（前7位为分类核心成分）")
+    ax.set_title("随机森林特征重要性（前7位为分类核心成分）")
     ax.set_xlim(0, 0.32)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -76,10 +76,12 @@ def fig_importance():
                        Patch(color=GRAY, label="其余成分")],
               loc="lower right", fontsize=8, frameon=False)
     fig.tight_layout()
-    fig.savefig(os.path.join(FIG_DIR, "fig_q2_importance.png"),
+    fig.savefig(os.path.join(FIG_DIR, "fig_q2_importance.svg"),
+                bbox_inches="tight")
+    fig.savefig(os.path.join(FIG_DIR, "fig_q2_importance.pdf"),
                 bbox_inches="tight")
     plt.close(fig)
-    print("已生成 图6-1（特征重要性）")
+    print("已生成 特征重要性图（SVG + PDF）")
 
 
 # ----------------------------------------------------------------------
@@ -121,13 +123,15 @@ def fig_cluster():
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
 
-    fig.suptitle("图6-2  高钾、铅钡玻璃亚类划分（核心成分PCA投影，×为亚类质心）",
+    fig.suptitle("高钾、铅钡玻璃亚类划分（核心成分PCA投影，×为亚类质心）",
                  fontsize=11, y=1.02)
     fig.tight_layout()
-    fig.savefig(os.path.join(FIG_DIR, "fig_q2_cluster.png"),
+    fig.savefig(os.path.join(FIG_DIR, "fig_q2_cluster.svg"),
+                bbox_inches="tight")
+    fig.savefig(os.path.join(FIG_DIR, "fig_q2_cluster.pdf"),
                 bbox_inches="tight")
     plt.close(fig)
-    print("已生成 图6-2（亚类散点）")
+    print("已生成 亚类划分图（SVG + PDF）")
 
 
 # ----------------------------------------------------------------------
@@ -166,13 +170,15 @@ def fig_elbow():
         ax.spines["top"].set_visible(False)
         ax2.spines["top"].set_visible(False)
 
-    fig.suptitle("图6-3  K-means++聚类评估（SSE与轮廓系数随K的变化）",
+    fig.suptitle("K-means++聚类评估（SSE与轮廓系数随K的变化）",
                  fontsize=11, y=1.02)
     fig.tight_layout()
-    fig.savefig(os.path.join(FIG_DIR, "fig_q2_elbow.png"),
+    fig.savefig(os.path.join(FIG_DIR, "fig_q2_elbow.svg"),
+                bbox_inches="tight")
+    fig.savefig(os.path.join(FIG_DIR, "fig_q2_elbow.pdf"),
                 bbox_inches="tight")
     plt.close(fig)
-    print("已生成 图6-3（聚类评估）")
+    print("已生成 聚类评估图（SVG + PDF）")
 
 
 if __name__ == "__main__":
