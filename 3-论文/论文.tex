@@ -163,7 +163,7 @@ H_{0}:\text{属性与表面风化相互独立},\quad H_{1}:\text{二者不独立
 其自由度 $\nu=(L-1)(2-1)=L-1$。当各格期望频数均不小于 $5$ 时 $\chi^{2}$ 渐近服从 $\chi^{2}(\nu)$，P 值取 $P=\Pr(\chi^{2}(\nu)\ge\chi_{\mathrm{obs}}^{2})$，其中 $\chi_{\mathrm{obs}}^{2}$ 为观测样本的卡方统计量，显著性水平取 $\alpha=0.05$。纹饰、颜色系列联表存在期望频数过小（$E_{\ell c}<5$）甚至为零的格，卡方近似不再可靠，改用蒙特卡洛置换检验：固定属性类别与样本量，将风化标签随机重排 $N_{\mathrm{perm}}=5000$ 次并每次重算卡方统计量 $\chi_{t}^{2}$（$t=1,\dots,N_{\mathrm{perm}}$），P 值取
 
 \begin{equation*}
-P_{\mathrm{perm}}=\frac{\sum_{t=1}^{N_{\mathrm{perm}}}\mathbb{1}\{\chi_{t}^{2}\ge\chi_{\mathrm{obs}}^{2}\}+1}{N_{\mathrm{perm}}+1},
+P_{\mathrm{perm}}=\frac{\sum_{t=1}^{N_{\mathrm{perm}}}\mathbf{1}\{\chi_{t}^{2}\ge\chi_{\mathrm{obs}}^{2}\}+1}{N_{\mathrm{perm}}+1},
 \end{equation*}
 
 分子分母同加 $1$ 以避免 $P=0$ 的伪精确；该检验可视作费希尔精确检验对 $L\times2$ 列联表的推广。
@@ -321,7 +321,7 @@ $r_{d}<0$ 表示风化过程中该成分相对 $\mathrm{SiO_2}$ 流失，$r_{d}>
 作为对照，按熊强等（2025）的风化虚拟变量回归复核趋势方向：对风化显著相关成分 $d$，以少量低缺失成分为特征集 $\mathcal{F}_d$ 拟合
 
 \begin{equation*}
-x_{id}=\alpha_{d}+\sum_{f\in\mathcal{F}_d}\beta_{df}x_{if}+\lambda_{d}WG_i,\quad WG_i=\mathbb{1}\{Y_i>0\}
+x_{id}=\alpha_{d}+\sum_{f\in\mathcal{F}_d}\beta_{df}x_{if}+\lambda_{d}WG_i,\quad WG_i=\mathbf{1}\{Y_i>0\}
 \end{equation*}
 
 其中 $WG_i$ 为风化虚拟变量，$\lambda_d$ 即风化对含量的净效应，$\alpha_d$ 为截距项、$\beta_{df}$ 为特征 $f$ 的回归系数；将风化样本的 $WG$ 置 $0$ 即得风化前预测，据此与主线 A 的升降方向、量级相互印证。
