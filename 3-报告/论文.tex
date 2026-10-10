@@ -474,7 +474,7 @@ $\mathrm{CuO}$ & $-0.235$ & $0.025$ & $-0.586$ \\
 K-means 以簇内离差平方和最小为目标，将样本划分为 $K$ 个互不相交的簇 $\mathcal{G}_1,\dots,\mathcal{G}_K$，簇 $k$ 的质心 $\mu_k$ 取簇内特征均值，目标函数
 
 \begin{equation*}
-J_K=\sum_{k=1}^{K}\sum_{i\in\mathcal{G}_k}\sum_{d\in\mathcal{Q}}\big(z_{id}-\mu_{kd}\big)^{2},\quad \mu_{kd}=\frac{1}{|\mathcal{G}_k|}\sum_{i\in\mathcal{G}_k}z_{id},
+J_K=\sum_{k=1}^{K}\sum_{i\in\mathcal{G}_k}\sum_{d\in\mathcal{Q}}(z_{id}-\mu_{kd})^{2},\quad \mu_{kd}=\frac{1}{|\mathcal{G}_k|}\sum_{i\in\mathcal{G}_k}z_{id},
 \end{equation*}
 
 其中 $|\mathcal{G}_k|$ 为簇 $k$ 的样本数；通过"样本分配至最近质心—按簇均值更新质心"交替迭代直至收敛。K-means++ 改进初始质心选取：依次挑选初始质心，候选样本以与已选质心最短距离的平方成正比概率被选中，以降低初始值对局部最优的影响（刘振文等，2025）。
@@ -495,7 +495,7 @@ q_{i}=\frac{\beta_{i}-\alpha_{i}}{\max(\alpha_{i},\beta_{i})},
 为检验划分不依赖特定算法，以 Ward 层次聚类作对照：从每样本一类出发，每次合并使簇内离差平方和增量
 
 \begin{equation*}
-\Delta J_{k\ell}=\frac{|\mathcal{G}_k|\,|\mathcal{G}_\ell|}{|\mathcal{G}_k|+|\mathcal{G}_\ell|}\sum_{d\in\mathcal{Q}}\big(\mu_{kd}-\mu_{\ell d}\big)^{2}
+\Delta J_{k\ell}=\frac{|\mathcal{G}_k|\,|\mathcal{G}_\ell|}{|\mathcal{G}_k|+|\mathcal{G}_\ell|}\sum_{d\in\mathcal{Q}}(\mu_{kd}-\mu_{\ell d})^{2}
 \end{equation*}
 
 最小的两簇，所得树状划分应与 K-means++ 的结构一致。
@@ -572,7 +572,7 @@ t_{kd}=\frac{\bar{C}_{k,d}-\bar{C}_{d}}{s_{d}}
 亚类划分的合理性以调整兰德指数（ARI）衡量两种划分的一致程度：设基准划分 $U$ 与对照划分 $V$ 的交叉表元素为 $n_{ij}$，行、列合计为 $n_{i\cdot}$、$n_{\cdot j}$，则
 
 \begin{equation*}
-ARI=\frac{\sum_{ij}\binom{n_{ij}}{2}-\dfrac{\sum_{i}\binom{n_{i\cdot}}{2}\,\sum_{j}\binom{n_{\cdot j}}{2}}{\binom{n}{2}}}{\dfrac{1}{2}\Big(\sum_{i}\binom{n_{i\cdot}}{2}+\sum_{j}\binom{n_{\cdot j}}{2}\Big)-\dfrac{\sum_{i}\binom{n_{i\cdot}}{2}\,\sum_{j}\binom{n_{\cdot j}}{2}}{\binom{n}{2}}},
+ARI=\frac{\sum_{ij}\binom{n_{ij}}{2}-\dfrac{\sum_{i}\binom{n_{i\cdot}}{2}\,\sum_{j}\binom{n_{\cdot j}}{2}}{\binom{n}{2}}}{\dfrac{1}{2}(\sum_{i}\binom{n_{i\cdot}}{2}+\sum_{j}\binom{n_{\cdot j}}{2})-\dfrac{\sum_{i}\binom{n_{i\cdot}}{2}\,\sum_{j}\binom{n_{\cdot j}}{2}}{\binom{n}{2}}},
 \end{equation*}
 
 $ARI$ 越接近 $1$ 说明两划分越一致、结构越稳健；簇内质量以平均轮廓系数（定义见 6.2）衡量，用于比较不同特征方案。
