@@ -69,7 +69,7 @@
 S_{i}=\sum_{d=1}^{D}x_{id}
 \end{equation*}
 
-其中 $S_i$ 为第 $i$ 个采样点的成分累加和，$x_{id}$ 为该采样点第 $d$ 种成分的质量分数，$D$ 为成分总数。参照彭丽红等（2024），\textbf{限定化学成分比例累加和在 $85\%\sim105\%$ 才可视为有效数据}，以 $V_{i}=\mathbf{1}\{85\%\le S_{i}\le105\%\}$ 标记样本有效性，剔除 $2$ 条无效采样数据，保留 $67$ 条已知、$8$ 条未知有效样本。
+其中 $S_i$ 为第 $i$ 个采样点的成分累加和，$x_{id}$ 为该采样点第 $d$ 种成分的质量分数，$D$ 为成分总数。参照彭丽红等（2024），\textbf{限定化学成分比例累加和在 $85\%\sim105\%$ 才可视为有效数据}，以 $V_{i}=\mathbf{1}\left\{85\%\le S_{i}\le105\%\right\}$ 标记样本有效性，剔除 $2$ 条无效采样数据，保留 $67$ 条已知、$8$ 条未知有效样本。
 
 \subsection{缺失率统计与缺失机制判别}
 
@@ -79,7 +79,7 @@ S_{i}=\sum_{d=1}^{D}x_{id}
 \rho_{d}=\frac{1}{n}\sum_{i=1}^{n}\mathbf{1}\{x_{id}\;\text{未检出}\}\times100\%
 \end{equation*}
 
-其中 $\rho_d$ 为第 $d$ 种成分的缺失率，$n$ 为样本总数，$\mathbf{1}\{\cdot\}$ 为示性函数，条件成立时取 $1$、否则取 $0$。将 $14$ 种成分划分为高、中、低缺失三档，区分非随机缺失（MNAR）检出限缺失与可插补缺失，高缺失成分仅保留二值检出特征。
+其中 $\rho_d$ 为第 $d$ 种成分的缺失率，$n$ 为样本总数，$\mathbf{1}\left\{\cdot\right\}$ 为示性函数，条件成立时取 $1$、否则取 $0$。将 $14$ 种成分划分为高、中、低缺失三档，区分非随机缺失（MNAR）检出限缺失与可插补缺失，高缺失成分仅保留二值检出特征。
 
 
 \subsubsection{SVR 插补}
@@ -94,7 +94,7 @@ S_{i}=\sum_{d=1}^{D}x_{id}
 K(\boldsymbol{x}_{i},\boldsymbol{x}_{j})=\exp(-\gamma\|\boldsymbol{x}_{i}-\boldsymbol{x}_{j}\|^{2})
 \end{equation*}
 
-其中 $\boldsymbol{w}$ 为超平面法向量，$b$ 为偏置项，$\xi_j$、$\xi_j^{*}$ 为第 $j$ 个训练样本的上、下松弛变量，$C$ 为惩罚系数，$m$ 为参与训练的样本数；$K(\boldsymbol{x}_i,\boldsymbol{x}_j)$ 为样本 $\boldsymbol{x}_i$ 与 $\boldsymbol{x}_j$ 之间的高斯核函数值，$\gamma$ 为核宽度参数，$\|\cdot\|$ 表示欧氏范数。仅对 $R^2$ 较高、关联可信的 $\mathrm{K_2O}$、$\mathrm{PbO}$、$\mathrm{BaO}$ 开展数值插补，其余中缺失成分因拟合效果差仅保留二值特征，保证插补结果稳健无畸变。
+其中 $\boldsymbol{w}$ 为超平面法向量，$b$ 为偏置项，$\xi_j$、$\xi_j^{*}$ 为第 $j$ 个训练样本的上、下松弛变量，$C$ 为惩罚系数，$m$ 为参与训练的样本数；$K\left(\boldsymbol{x}_i,\boldsymbol{x}_j\right)$ 为样本 $\boldsymbol{x}_i$ 与 $\boldsymbol{x}_j$ 之间的高斯核函数值，$\gamma$ 为核宽度参数，$\left\|\cdot\right\|$ 表示欧氏范数。仅对 $R^2$ 较高、关联可信的 $\mathrm{K_2O}$、$\mathrm{PbO}$、$\mathrm{BaO}$ 开展数值插补，其余中缺失成分因拟合效果差仅保留二值特征，保证插补结果稳健无畸变。
 
 \subsubsection{采样点聚合}
 
@@ -104,7 +104,7 @@ K(\boldsymbol{x}_{i},\boldsymbol{x}_{j})=\exp(-\gamma\|\boldsymbol{x}_{i}-\bolds
 \overline{x}_{d}^{(k)}=\frac{1}{n_{k}}\sum_{j=1}^{n_{k}}x_{jd}^{(k)}
 \end{equation*}
 
-其中 $\overline{x}_d^{(k)}$ 为第 $k$ 件文物第 $d$ 种成分的聚合均值，$n_k$ 为该文物的采样点个数，$x_{jd}^{(k)}$ 为其第 $j$ 个采样点的成分含量。结合未风化点数据补全样本，二次校验闭合度后得到 $56$ 组有效文物级样本，满足建模独立性要求。
+其中 $\overline{x}_d^{\left(k\right)}$ 为第 $k$ 件文物第 $d$ 种成分的聚合均值，$n_k$ 为该文物的采样点个数，$x_{jd}^{\left(k\right)}$ 为其第 $j$ 个采样点的成分含量。结合未风化点数据补全样本，二次校验闭合度后得到 $56$ 组有效文物级样本，满足建模独立性要求。
 
 
 \subsubsection{对数比变换}
@@ -154,13 +154,13 @@ n_{\ell\cdot}=\sum_{c=1}^{2}n_{\ell c},\quad n_{\cdot c}=\sum_{\ell=1}^{L}n_{\el
 H_{0}:\text{属性与表面风化相互独立},\quad H_{1}:\text{二者不独立}.
 \end{equation*}
 
-在 $H_{0}$ 成立时，格 $(\ell,c)$ 的期望频数为 $E_{\ell c}=n_{\ell\cdot}n_{\cdot c}/n$，据此构造卡方统计量
+在 $H_{0}$ 成立时，格 $\left(\ell,c\right)$ 的期望频数为 $E_{\ell c}=n_{\ell\cdot}n_{\cdot c}/n$，据此构造卡方统计量
 
 \begin{equation*}
 \chi^{2}=\sum_{\ell=1}^{L}\sum_{c=1}^{2}\frac{(n_{\ell c}-E_{\ell c})^{2}}{E_{\ell c}}
 \end{equation*}
 
-其自由度 $\nu=(L-1)(2-1)=L-1$。当各格期望频数均不小于 $5$ 时 $\chi^{2}$ 渐近服从 $\chi^{2}(\nu)$，P 值取 $P=\Pr(\chi^{2}(\nu)\ge\chi_{\mathrm{obs}}^{2})$，其中 $\chi_{\mathrm{obs}}^{2}$ 为观测样本的卡方统计量，显著性水平取 $\alpha=0.05$。纹饰、颜色系列联表存在期望频数过小（$E_{\ell c}<5$）甚至为零的格，卡方近似不再可靠，改用蒙特卡洛置换检验：固定属性类别与样本量，将风化标签随机重排 $N_{\mathrm{perm}}=5000$ 次并每次重算卡方统计量 $\chi_{t}^{2}$（$t=1,\dots,N_{\mathrm{perm}}$），P 值取
+其自由度 $\nu=\left(L-1\right)\left(2-1\right)=L-1$。当各格期望频数均不小于 $5$ 时 $\chi^{2}$ 渐近服从 $\chi^{2}\left(\nu\right)$，P 值取 $P=\Pr\left(\chi^{2}\left(\nu\right)\ge\chi_{\mathrm{obs}}^{2}\right)$，其中 $\chi_{\mathrm{obs}}^{2}$ 为观测样本的卡方统计量，显著性水平取 $\alpha=0.05$。纹饰、颜色系列联表存在期望频数过小（$E_{\ell c}<5$）甚至为零的格，卡方近似不再可靠，改用蒙特卡洛置换检验：固定属性类别与样本量，将风化标签随机重排 $N_{\mathrm{perm}}=5000$ 次并每次重算卡方统计量 $\chi_{t}^{2}$（$t=1,\dots,N_{\mathrm{perm}}$），P 值取
 
 \begin{equation*}
 P_{\mathrm{perm}}=\frac{\sum_{t=1}^{N_{\mathrm{perm}}}\mathbf{1}\{\chi_{t}^{2}\ge\chi_{\mathrm{obs}}^{2}\}+1}{N_{\mathrm{perm}}+1},
@@ -177,13 +177,13 @@ P_{\mathrm{perm}}=\frac{\sum_{t=1}^{N_{\mathrm{perm}}}\mathbf{1}\{\chi_{t}^{2}\g
 \rho=\frac{\sum_{i=1}^{n}(u_{i}-\overline{u})(v_{i}-\overline{v})}{\sqrt{\sum_{i=1}^{n}(u_{i}-\overline{u})^{2}}\sqrt{\sum_{i=1}^{n}(v_{i}-\overline{v})^{2}}},
 \end{equation*}
 
-其中 $\overline{u}=\frac{1}{n}\sum_{i=1}^{n}u_{i}$、$\overline{v}=\frac{1}{n}\sum_{i=1}^{n}v_{i}$；记全部 $\frac{1}{2}n(n-1)$ 个样本对中一致对与不一致对的数目为 $n_{c}$、$n_{d}$，其中并列对按 Kendall $\tau_{b}$ 修正，则
+其中 $\overline{u}=\frac{1}{n}\sum_{i=1}^{n}u_{i}$、$\overline{v}=\frac{1}{n}\sum_{i=1}^{n}v_{i}$；记全部 $\frac{1}{2}n\left(n-1\right)$ 个样本对中一致对与不一致对的数目为 $n_{c}$、$n_{d}$，其中并列对按 Kendall $\tau_{b}$ 修正，则
 
 \begin{equation*}
 \tau=\frac{2(n_{c}-n_{d})}{n(n-1)}.
 \end{equation*}
 
-$\rho$ 与 $\tau$ 均取值于 $[-1,1]$，其正负与大小反映关联方向与强弱，与卡方检验共同支撑风化影响因素的判断。
+$\rho$ 与 $\tau$ 均取值于 $\left[-1,1\right]$，其正负与大小反映关联方向与强弱，与卡方检验共同支撑风化影响因素的判断。
 
 
 \subsubsection{实践效果}
@@ -251,7 +251,7 @@ s_{p}=\sqrt{\frac{(n_{0}-1)s_{0}^{2}+(n_{1}-1)s_{1}^{2}}{n_{0}+n_{1}-2}}
 \mathrm{d}=\frac{\overline{x}_{1,d}-\overline{x}_{0,d}}{s_{p}},
 \end{equation*}
 
-$\mathrm{d}>0$ 表示风化后含量升高、$\mathrm{d}<0$ 表示下降，$|\mathrm{d}|$ 约 $0.2,0.5,0.8$ 分别对应小、中、大效应。
+$\mathrm{d}>0$ 表示风化后含量升高、$\mathrm{d}<0$ 表示下降，$\left|\mathrm{d}\right|$ 约 $0.2,0.5,0.8$ 分别对应小、中、大效应。
 
 \subsubsection{实践效果}
 
@@ -274,7 +274,7 @@ $\mathrm{d}>0$ 表示风化后含量升高、$\mathrm{d}<0$ 表示下降，$|\ma
 Y_i=\beta_{0}+\sum_{d\in\mathcal{S}}\beta_{d}x_{id}
 \end{equation*}
 
-回归系数 $(\beta_0,\beta_d)$ 由最小二乘法确定，即使残差平方和最小，$\widehat{\beta}_0$、$\widehat{\beta}_d$ 即其最小二乘估计值
+回归系数 $\left(\beta_0,\beta_d\right)$ 由最小二乘法确定，即使残差平方和最小，$\widehat{\beta}_0$、$\widehat{\beta}_d$ 即其最小二乘估计值
 
 \begin{equation*}
 (\widehat\beta_{0},\widehat\beta_{d})=\arg\min\sum_{i}(Y_i-\beta_{0}-\sum_{d\in\mathcal{S}}\beta_{d}x_{id})^{2}
@@ -386,7 +386,7 @@ z_{id}=\frac{C_{id}-\bar{C}_{d}}{s_{d}}
 
 \subsubsection{随机森林特征重要性}
 
-其一，随机森林以基尼不纯度下降度量特征重要性（刘振文等，2025）：节点 $\nu$ 的两类占比为 $\pi_0,\pi_1$，不纯度 $G(\nu)=1-\sum_{k=0}^{1}\pi_k^2$，按成分 $d$ 分裂为子节点 $\nu_L,\nu_R$ 的不纯度下降为
+其一，随机森林以基尼不纯度下降度量特征重要性（刘振文等，2025）：节点 $\nu$ 的两类占比为 $\pi_0,\pi_1$，不纯度 $G\left(\nu\right)=1-\sum_{k=0}^{1}\pi_k^2$，按成分 $d$ 分裂为子节点 $\nu_L,\nu_R$ 的不纯度下降为
 
 \begin{equation*}
 \Delta G(\nu)=G(\nu)-\frac{n_{\nu_L}}{n_\nu}G(\nu_L)-\frac{n_{\nu_R}}{n_\nu}G(\nu_R),
@@ -477,7 +477,7 @@ K-means 以簇内离差平方和最小为目标，将样本划分为 $K$ 个互�
 J_K=\sum_{k=1}^{K}\sum_{i\in\mathcal{G}_k}\sum_{d\in\mathcal{Q}}(z_{id}-\mu_{kd})^{2},\quad \mu_{kd}=\frac{1}{|\mathcal{G}_k|}\sum_{i\in\mathcal{G}_k}z_{id},
 \end{equation*}
 
-其中 $|\mathcal{G}_k|$ 为簇 $k$ 的样本数；通过"样本分配至最近质心—按簇均值更新质心"交替迭代直至收敛。K-means++ 改进初始质心选取：依次挑选初始质心，候选样本以与已选质心最短距离的平方成正比概率被选中，以降低初始值对局部最优的影响（刘振文等，2025）。
+其中 $\left|\mathcal{G}_k\right|$ 为簇 $k$ 的样本数；通过"样本分配至最近质心—按簇均值更新质心"交替迭代直至收敛。K-means++ 改进初始质心选取：依次挑选初始质心，候选样本以与已选质心最短距离的平方成正比概率被选中，以降低初始值对局部最优的影响（刘振文等，2025）。
 
 
 \subsubsection{轮廓系数与类数选择}
@@ -509,7 +509,7 @@ q_{i}=\frac{\beta_{i}-\alpha_{i}}{\max(\alpha_{i},\beta_{i})},
 t_{kd}=\frac{\bar{C}_{k,d}-\bar{C}_{d}}{s_{d}}
 \end{equation*}
 
-其中 $\bar{C}_{k,d}$ 为簇 $k$ 在成分 $d$ 上的均值、$\bar{C}_{d}$ 为同类型全体样本的均值；以同类型样本标准差 $s_d$ 为单位度量（表注中以 $\sigma$ 表示），$|t_{kd}|$ 明显大于 $1$ 的成分即该亚类的主导差异成分（表 \ref{tab:subclass}），据此按玻璃化学特征命名亚类（彭丽红等，2024）。
+其中 $\bar{C}_{k,d}$ 为簇 $k$ 在成分 $d$ 上的均值、$\bar{C}_{d}$ 为同类型全体样本的均值；以同类型样本标准差 $s_d$ 为单位度量（表注中以 $\sigma$ 表示），$\left|t_{kd}\right|$ 明显大于 $1$ 的成分即该亚类的主导差异成分（表 \ref{tab:subclass}），据此按玻璃化学特征命名亚类（彭丽红等，2024）。
 
 
 \subsubsection{实践效果}
@@ -611,7 +611,7 @@ $\delta$ 取 $5\%$、$10\%$，每次扰动后按 6.2 流程重聚类并重复 $1
 P_i=\frac{1}{1+e^{-\eta_i}},\quad \eta_{i}=a_{0}+\sum_{d=1}^{14}a_{d}z_{id},
 \end{equation*}
 
-$P_i>0.5$ 判为铅钡；随机森林与深度决策树给出类别投票，三模型多数表决得最终类别，置信度 $|P_i-0.5|\times2$ 反映判据强弱。
+$P_i>0.5$ 判为铅钡；随机森林与深度决策树给出类别投票，三模型多数表决得最终类别，置信度 $\left|P_i-0.5\right|\times2$ 反映判据强弱。
 
 
 \subsubsection{风化样本的假设-验证判别}
@@ -622,7 +622,7 @@ $P_i>0.5$ 判为铅钡；随机森林与深度决策树给出类别投票，三�
 \widehat{C}_{id}^{(h)}=C_{id}-\frac{r_{d}^{(h)}}{A^{(h)}}\,Y_{i},
 \end{equation*}
 
-其中 $r_{d}^{(h)}$、$A^{(h)}$ 为候选类 $h$ 的反应比例与反推分母（由 5.3 对应类型给出）、$Y_i$ 为该样本风化程度（取值见 5.3，注意区别于类型标签 $y_i$）；将还原成分再代入 6.1 判别模型得概率 $P_i^{(h)}$，还原后判别与假设 $h$ 一致者予以保留。未知样品检出成分较少：某假设的关键成分缺失，或还原结果超出成分含量物理范围，则该假设不可行；未检出成分按检出限处理、以 $0$ 参与计算（侯兴汉等，2026）。
+其中 $r_{d}^{\left(h\right)}$、$A^{\left(h\right)}$ 为候选类 $h$ 的反应比例与反推分母（由 5.3 对应类型给出）、$Y_i$ 为该样本风化程度（取值见 5.3，注意区别于类型标签 $y_i$）；将还原成分再代入 6.1 判别模型得概率 $P_i^{\left(h\right)}$，还原后判别与假设 $h$ 一致者予以保留。未知样品检出成分较少：某假设的关键成分缺失，或还原结果超出成分含量物理范围，则该假设不可行；未检出成分按检出限处理、以 $0$ 参与计算（侯兴汉等，2026）。
 
 \subsubsection{实践效果}
 
@@ -640,12 +640,12 @@ $P_i>0.5$ 判为铅钡；随机森林与深度决策树给出类别投票，三�
 \widehat y_i=\begin{cases}\text{铅钡},&P_i>0.5,\\\text{高钾},&P_i\le0.5,\end{cases}\quad c_i=|P_i-0.5|\times2,
 \end{equation*}
 
-$c_i\in[0,1]$ 反映概率偏离判界 $0.5$ 的程度，越大判别越可信；三模型多数表决作为最终类别的一致性依据。
+$c_i\in\left[0,1\right]$ 反映概率偏离判界 $0.5$ 的程度，越大判别越可信；三模型多数表决作为最终类别的一致性依据。
 
 
 \subsubsection{假设-验证综合判定}
 
-对风化样本，其观测成分须先还原为风化前成分再判别：分别以高钾、铅钡两种假设 $h$，按 7.1 还原得风化前成分并求判别概率 $P_i^{(h)}$；假设 $h$ 可行需同时满足其关键成分可检出、还原值落在成分物理范围、且还原后判别与 $h$ 一致。据此综合判定：无风化样本直接采用直接判别结果；风化样本优先采用可行且自洽的假设-验证结果；若两假设均不可行或互相矛盾，则以三模型投票的直接判别结果为准。
+对风化样本，其观测成分须先还原为风化前成分再判别：分别以高钾、铅钡两种假设 $h$，按 7.1 还原得风化前成分并求判别概率 $P_i^{\left(h\right)}$；假设 $h$ 可行需同时满足其关键成分可检出、还原值落在成分物理范围、且还原后判别与 $h$ 一致。据此综合判定：无风化样本直接采用直接判别结果；风化样本优先采用可行且自洽的假设-验证结果；若两假设均不可行或互相矛盾，则以三模型投票的直接判别结果为准。
 
 
 \subsubsection{实践效果}
@@ -673,7 +673,7 @@ A8 & 无风化 & $0.91$ & — & — & 铅钡 & $0.83$ \\
 \end{tabular}}
 \end{table}
 
-注：判别概率为逻辑回归输出的 P(铅钡)，P(铅钡)$>0.5$ 判为铅钡；"—"表示无风化样本不做还原，或关键成分缺失、还原结果超出物理范围导致假设不可行；置信度 $=|P-0.5|\times2$。
+注：判别概率为逻辑回归输出的 P(铅钡)，P(铅钡)$>0.5$ 判为铅钡；"—"表示无风化样本不做还原，或关键成分缺失、还原结果超出物理范围导致假设不可行；置信度 $=\left|P-0.5\right|\times2$。
 
 表 \ref{tab:unknown} 显示，A1、A6、A7 判为高钾，A2、A3、A4、A5、A8 判为铅钡。未风化样本 A1、A3、A4、A8 的成分即为风化前近似，直接判别置信度均不低于 $0.72$；风化样本 A6、A7 的高钾假设还原完全自洽，还原后 $\mathrm{SiO_2}$ 约 $58\%$、$\mathrm{K_2O}$ 约 $12.7\%$，与未风化高钾样本画像一致，置信度超过 $0.97$；A2、A5 的检出成分过少或还原结果超出物理范围，假设-验证不可行，但直接判别三模型投票一致且置信度高于 $0.78$，结论可靠。
 
@@ -703,7 +703,7 @@ A8 & 无风化 & $0.91$ & — & — & 铅钡 & $0.83$ \\
 C'_{id}=C_{id}\,(1+\epsilon_{id}),\quad \epsilon_{id}\sim N(0,\delta^{2}),
 \end{equation*}
 
-$\delta$ 取 $5\%$ 与 $10\%$，每次扰动后重新标准化并判别，重复 $100$ 次；记基准判别为 $\widehat y_i$、第 $m$ 次扰动判别为 $\widehat y_i^{(m)}$，则该样本的类别翻转率为
+$\delta$ 取 $5\%$ 与 $10\%$，每次扰动后重新标准化并判别，重复 $100$ 次；记基准判别为 $\widehat y_i$、第 $m$ 次扰动判别为 $\widehat y_i^{\left(m\right)}$，则该样本的类别翻转率为
 
 \begin{equation*}
 f_i=\frac{1}{100}\sum_{m=1}^{100}\mathrm{1}\big\{\widehat y_i^{(m)}\neq \widehat y_i\big\},
