@@ -583,7 +583,7 @@ $ARI$ 越接近 $1$ 说明两划分越一致、结构越稳健；簇内质量以
 敏感性检验对每件样本的核心成分施加同幅度乘性高斯扰动
 
 \begin{equation*}
-C'_{id}=C_{id}\,(1+\epsilon_{id}),\quad \epsilon_{id}\sim N(0,\delta^{2}),
+C'_{id}=C_{id}\,(1+\varepsilon_{id}),\quad \varepsilon_{id}\sim N(0,\delta^{2}),
 \end{equation*}
 
 $\delta$ 取 $5\%$、$10\%$，每次扰动后按 6.2 流程重聚类并重复 $100$ 次，以扰动前后划分的 ARI 度量结构稳定性（熊强等，2025 的思路：扰动后仍归原类即表明鲁棒）；同时将类数改为 $K\pm1$ 重聚类并以 ARI 比较，以核心 $7$ 成分、全部 $14$ 成分与 CLR 对数比变量三套特征分别聚类并比较平均轮廓系数，综合判断亚类划分是否依赖实现细节、结果是否稳健。
@@ -700,7 +700,7 @@ A8 & 无风化 & $0.91$ & — & — & 铅钡 & $0.83$ \\
 判别输入的稳健性以乘性高斯扰动检验：对第 $i$ 件未知样本第 $d$ 种成分含量施加扰动
 
 \begin{equation*}
-C'_{id}=C_{id}\,(1+\epsilon_{id}),\quad \epsilon_{id}\sim N(0,\delta^{2}),
+C'_{id}=C_{id}\,(1+\varepsilon_{id}),\quad \varepsilon_{id}\sim N(0,\delta^{2}),
 \end{equation*}
 
 $\delta$ 取 $5\%$ 与 $10\%$，每次扰动后重新标准化并判别，重复 $100$ 次；记基准判别为 $\widehat y_i$、第 $m$ 次扰动判别为 $\widehat y_i^{\left(m\right)}$，则该样本的类别翻转率为

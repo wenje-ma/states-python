@@ -671,7 +671,7 @@ indicators: permanganate index, pH, total hardness, and manganese. Based on the 
 size of 4 was employed, with a sliding step size of 1. The model used backward window prediction, leveraging the subsequent three
 observations to predict the current value. The study employed a phased grid search for tuning the hyperparameters of SVR. In the initial
 phase, coarse-grained range searches were conducted for the kernel function, regularization parameter C, kernel weight gamma, and
-insensitivity loss parameter epsilon ( ε) . Following this phase, a refined parameter search was performed within narrowed ranges. Using
+insensitivity loss parameter varepsilon ( ε) . Following this phase, a refined parameter search was performed within narrowed ranges. Using
 five-fold cross-validation, the evaluation process identified the optimal parameter combination based on the minimum mean absolute error
 and root mean square error. Additionally, the study utilized the absolute deviation between the mean values of the interpolated water
 quality indicators and the mean of the original data from each observation well as an evaluation metric. The study also conducted a

@@ -15,7 +15,7 @@ SUM_MIN,SUM_MAX=85.0,105.0
 HIGH_RATE,MID_RATE=50.0,20.0
 SPECIAL_TYPES=["未风化点","严重风化点"]
 ALR_REF="SiO2"
-SVR_PARAM_GRID={"C":[0.1,1,10,50],"gamma":[0.01,0.05,0.1,0.5],"epsilon":[0.01,0.05,0.1]}
+SVR_PARAM_GRID={"C":[0.1,1,10,50],"gamma":[0.01,0.05,0.1,0.5],"varepsilon":[0.01,0.05,0.1]}
 _t0=time.time()
 def stage(no,total,msg):
     print("[{}/{}] {}  （累计耗时 {:.1f}s）".format(no,total,msg,time.time()-_t0))
