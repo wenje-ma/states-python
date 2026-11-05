@@ -69,7 +69,7 @@
 S_{i}=\sum_{d=1}^{D}x_{id}
 \end{equation*}
 
-其中 $S_i$ 为第 $i$ 个采样点的成分累加和，$x_{id}$ 为该采样点第 $d$ 种成分的质量分数，$D$ 为成分总数。参照彭丽红等（2024），\textbf{限定化学成分比例累加和在 $85\%\sim105\%$ 才可视为有效数据}，以 $V_{i}=\mathbf{1}\left\{85\%\le S_{i}\le105\%\right\}$ 标记样本有效性，剔除 $2$ 条无效采样数据，保留 $67$ 条已知、$8$ 条未知有效样本。
+其中 $S_i$ 为第 $i$ 个采样点的成分累加和，$x_{id}$ 为该采样点第 $d$ 种成分的质量分数，$D$ 为成分总数。参照彭丽红等（2024），\textbf{限定化学成分比例累加和在 $85\%\sim105\%$ 才可视为有效数据}，以 $V_{i}=\mathbf{1}\left\{85\%\le{S}_{i}\le105\%\right\}$ 标记样本有效性，剔除 $2$ 条无效采样数据，保留 $67$ 条已知、$8$ 条未知有效样本。
 
 \subsection{缺失率统计与缺失机制判别}
 
@@ -118,7 +118,7 @@ y_{i,d}=\ln\frac{x_{i,d}}{x_{i,\mathrm{ref}}}
 其中 $y_{i,d}$ 为第 $i$ 个样本第 $d$ 种成分的 ALR 变换值，$x_{i,d}$ 为变换前的成分含量，$x_{i,\mathrm{ref}}$ 为基准成分 $\mathrm{SiO_2}$ 的含量。与基于几何均值的中心对数比（CLR）
 
 \begin{equation*}
-g_{i}=\left(\prod_{d=1}^{D'}x_{i,d}\right)^{1/D'},\quad y_{i,d}=\ln\frac{x_{i,d}}{g_{i}}
+g_{i}=\left(\prod_{d=1}^{D'}x_{i,d}\right)^{1/D'},\quad{y}_{i,d}=\ln\frac{x_{i,d}}{g_{i}}
 \end{equation*}
 
 其中 $g_i$ 为第 $i$ 个样本各成分含量的几何均值，$D'$ 为参与对数比变换的成分数，$y_{i,d}$ 为相应的 CLR 变换值。两套变换互补使用，彻底消除成分伪相关，最终得到适配统计检验、分类判别与回归预测的标准化数据集。
@@ -142,25 +142,25 @@ g_{i}=\left(\prod_{d=1}^{D'}x_{i,d}\right)^{1/D'},\quad y_{i,d}=\ln\frac{x_{i,d}
 
 \subsubsection{卡方独立性检验与蒙特卡洛置换检验}
 
-设属性共有 $L$ 个类别，风化状态分为无风化与风化两类。记第 $\ell$ 类属性、第 $c$ 类风化的观测频数为 $n_{\ell c}$（$\ell=1,\dots,L$；$c=1,2$），行合计、列合计与总样本数分别为
+设属性共有 $L$ 个类别，风化状态分为无风化与风化两类。记第 $\ell$ 类属性、第 $c$ 类风化的观测频数为 $n_{\ell{c}}$（$\ell=1,\dots,L$；$c=1,2$），行合计、列合计与总样本数分别为
 
 \begin{equation*}
-n_{\ell\cdot}=\sum_{c=1}^{2}n_{\ell c},\quad n_{\cdot c}=\sum_{\ell=1}^{L}n_{\ell c},\quad n=\sum_{\ell=1}^{L}\sum_{c=1}^{2}n_{\ell c}
+n_{\ell\cdot}=\sum_{c=1}^{2}n_{\ell{c}},\quad{n}_{\cdot{c}}=\sum_{\ell=1}^{L}n_{\ell{c}},\quad{n}=\sum_{\ell=1}^{L}\sum_{c=1}^{2}n_{\ell{c}}
 \end{equation*}
 
 其中 $n$ 表示参与检验的文物样本数。卡方独立性检验的原假设与备择假设为
 
 \begin{equation*}
-H_{0}:\text{属性与表面风化相互独立},\quad H_{1}:\text{二者不独立}.
+H_{0}:\text{属性与表面风化相互独立},\quad{H}_{1}:\text{二者不独立}.
 \end{equation*}
 
-在 $H_{0}$ 成立时，格 $\left(\ell,c\right)$ 的期望频数为 $E_{\ell c}=n_{\ell\cdot}n_{\cdot c}/n$，据此构造卡方统计量
+在 $H_{0}$ 成立时，格 $\left(\ell,c\right)$ 的期望频数为 $E_{\ell{c}}=n_{\ell\cdot}n_{\cdot{c}}/n$，据此构造卡方统计量
 
 \begin{equation*}
-\chi^{2}=\sum_{\ell=1}^{L}\sum_{c=1}^{2}\frac{(n_{\ell c}-E_{\ell c})^{2}}{E_{\ell c}}
+\chi^{2}=\sum_{\ell=1}^{L}\sum_{c=1}^{2}\frac{(n_{\ell{c}}-E_{\ell{c}})^{2}}{E_{\ell{c}}}
 \end{equation*}
 
-其自由度 $\nu=\left(L-1\right)\left(2-1\right)=L-1$。当各格期望频数均不小于 $5$ 时 $\chi^{2}$ 渐近服从 $\chi^{2}\left(\nu\right)$，P 值取 $P=\Pr\left(\chi^{2}\left(\nu\right)\ge\chi_{\mathrm{obs}}^{2}\right)$，其中 $\chi_{\mathrm{obs}}^{2}$ 为观测样本的卡方统计量，显著性水平取 $\alpha=0.05$。纹饰、颜色系列联表存在期望频数过小（$E_{\ell c}< 5$）甚至为零的格，卡方近似不再可靠，改用蒙特卡洛置换检验：固定属性类别与样本量，将风化标签随机重排 $N_{\mathrm{perm}}=5000$ 次并每次重算卡方统计量 $\chi_{t}^{2}$（$t=1,\dots,N_{\mathrm{perm}}$），P 值取
+其自由度 $\nu=\left(L-1\right)\left(2-1\right)=L-1$。当各格期望频数均不小于 $5$ 时 $\chi^{2}$ 渐近服从 $\chi^{2}\left(\nu\right)$，P 值取 $P=\Pr\left(\chi^{2}\left(\nu\right)\ge\chi_{\mathrm{obs}}^{2}\right)$，其中 $\chi_{\mathrm{obs}}^{2}$ 为观测样本的卡方统计量，显著性水平取 $\alpha=0.05$。纹饰、颜色系列联表存在期望频数过小（$E_{\ell{c}}<5$）甚至为零的格，卡方近似不再可靠，改用蒙特卡洛置换检验：固定属性类别与样本量，将风化标签随机重排 $N_{\mathrm{perm}}=5000$ 次并每次重算卡方统计量 $\chi_{t}^{2}$（$t=1,\dots,N_{\mathrm{perm}}$），P 值取
 
 \begin{equation*}
 P_{\mathrm{perm}}=\frac{\sum_{t=1}^{N_{\mathrm{perm}}}\mathbf{1}\{\chi_{t}^{2}\ge\chi_{\mathrm{obs}}^{2}\}+1}{N_{\mathrm{perm}}+1},
@@ -205,7 +205,7 @@ $\rho$ 与 $\tau$ 均取值于 $\left[-1,1\right]$，其正负与大小反映关
 \end{tabular}
 \end{table}
 
-注：$^*$ 为蒙特卡洛置换检验 p 值；$^{**}$ 表示 $p< 0.01$。
+注：$^*$ 为蒙特卡洛置换检验 p 值；$^{**}$ 表示 $p<0.01$。
 
 多种检验得到一致结论：表面风化与玻璃类型显著相关，铅钡玻璃风化占比 $70\%$，高钾玻璃风化占比仅 $33\%$；风化与纹饰、颜色不存在显著关联。
 
@@ -221,7 +221,7 @@ $\rho$ 与 $\tau$ 均取值于 $\left[-1,1\right]$，其正负与大小反映关
 记类型内第 $d$ 种成分为检验对象，无风化组、风化组的有效样本数与样本均值分别为 $n_{0}$、$n_{1}$ 与 $\overline{x}_{0,d}$、$\overline{x}_{1,d}$。Mann-Whitney U 检验的原假设与备择假设为
 
 \begin{equation*}
-H_{0}:\text{两组含量分布相同},\quad H_{1}:\text{两组含量分布不同}
+H_{0}:\text{两组含量分布相同},\quad{H}_{1}:\text{两组含量分布不同}
 \end{equation*}
 
 将两组共 $n_{0}+n_{1}$ 个观测合并后按升序编号取秩，设风化组的秩和为 $R_{1}$，则统计量
@@ -230,7 +230,7 @@ H_{0}:\text{两组含量分布相同},\quad H_{1}:\text{两组含量分布不同
 U=n_{0}n_{1}+\frac{n_{1}(n_{1}+1)}{2}-R_{1}
 \end{equation*}
 
-其含义等价于风化组中每个观测小于无风化组观测的次数之和。在 $H_0$ 下 $U$ 的分布仅取决于 $n_{0}$、$n_{1}$，其中小样本取精确分布，大样本可用正态近似，据此计算双尾 P 值；显著性水平取 $\alpha=0.05$，$P< \alpha$ 时认为该成分含量在风化前后存在显著差异。
+其含义等价于风化组中每个观测小于无风化组观测的次数之和。在 $H_0$ 下 $U$ 的分布仅取决于 $n_{0}$、$n_{1}$，其中小样本取精确分布，大样本可用正态近似，据此计算双尾 P 值；显著性水平取 $\alpha=0.05$，$P<\alpha$ 时认为该成分含量在风化前后存在显著差异。
 
 
 \subsubsection{Cohen's d 效应量}
@@ -238,7 +238,7 @@ U=n_{0}n_{1}+\frac{n_{1}(n_{1}+1)}{2}-R_{1}
 进一步以 Cohen's d 效应量刻画差异大小。组内样本方差与合并标准差分别为
 
 \begin{equation*}
-s_{g}^{2}=\frac{1}{n_{g}-1}\sum_{i=1}^{n_{g}}(x_{g,i}-\overline{x}_{g,d})^{2},\quad g=0,1
+s_{g}^{2}=\frac{1}{n_{g}-1}\sum_{i=1}^{n_{g}}(x_{g,i}-\overline{x}_{g,d})^{2},\quad{g}=0,1
 \end{equation*}
 
 \begin{equation*}
@@ -251,11 +251,11 @@ s_{p}=\sqrt{\frac{(n_{0}-1)s_{0}^{2}+(n_{1}-1)s_{1}^{2}}{n_{0}+n_{1}-2}}
 \mathrm{d}=\frac{\overline{x}_{1,d}-\overline{x}_{0,d}}{s_{p}},
 \end{equation*}
 
-$\mathrm{d}> 0$ 表示风化后含量升高、$\mathrm{d}< 0$ 表示下降，$\left|\mathrm{d}\right|$ 约 $0.2,0.5,0.8$ 分别对应小、中、大效应。
+$\mathrm{d}>0$ 表示风化后含量升高、$\mathrm{d}<0$ 表示下降，$\left|\mathrm{d}\right|$ 约 $0.2,0.5,0.8$ 分别对应小、中、大效应。
 
 \subsubsection{实践效果}
 
-对两类玻璃的各成分逐对检验，即可结合显著性、$\mathrm{d}$ 的符号与大小归纳风化前后的含量统计规律。高钾玻璃中，风化后 $\mathrm{SiO_2}$ 均值由 $66.69\%$ 上升至 $93.96\%$（$\mathrm{P}< 0.001$，Cohen's $\mathrm{d}=4.80$），$\mathrm{K_2O}$、$\mathrm{\mathrm{CaO}}$、$\mathrm{Al_2O_3}$、$\mathrm{Fe_2O_3}$ 均出现显著下降。铅钡玻璃表现出相反变化趋势：$\mathrm{SiO_2}$ 由 $54.93\%$ 下降至 $27.73\%$（$\mathrm{P}< 0.001$，$\mathrm{d}=-2.45$），$\mathrm{\mathrm{PbO}}$、$\mathrm{\mathrm{CaO}}$、$\mathrm{P_2O_5}$ 含量显著升高。高钾玻璃风化过程表现为二氧化硅富集、助熔与碱金属组分流失；铅钡玻璃则发生二氧化硅流失、重金属氧化物相对富集。
+对两类玻璃的各成分逐对检验，即可结合显著性、$\mathrm{d}$ 的符号与大小归纳风化前后的含量统计规律。高钾玻璃中，风化后 $\mathrm{SiO_2}$ 均值由 $66.69\%$ 上升至 $93.96\%$（$\mathrm{P}<0.001$，Cohen's $\mathrm{d}=4.80$），$\mathrm{K_2O}$、$\mathrm{\mathrm{CaO}}$、$\mathrm{Al_2O_3}$、$\mathrm{Fe_2O_3}$ 均出现显著下降。铅钡玻璃表现出相反变化趋势：$\mathrm{SiO_2}$ 由 $54.93\%$ 下降至 $27.73\%$（$\mathrm{P}<0.001$，$\mathrm{d}=-2.45$），$\mathrm{\mathrm{PbO}}$、$\mathrm{\mathrm{CaO}}$、$\mathrm{P_2O_5}$ 含量显著升高。高钾玻璃风化过程表现为二氧化硅富集、助熔与碱金属组分流失；铅钡玻璃则发生二氧化硅流失、重金属氧化物相对富集。
 
 \subsection{风化前化学成分预测}
 
@@ -288,18 +288,18 @@ $R^2$ 反映所选成分对风化程度的可解释比例。
 第二步，估计各成分相对 $\mathrm{SiO_2}$ 的风化反应比例。记类型内无风化组、风化组第 $d$ 种成分的均值分别为 $\overline{x}_{0,d}$、$\overline{x}_{1,d}$（与 5.1、5.2 的 $0$ 为无风化、$1$ 为风化编码一致），风化引起的含量差为 $\Delta_{d}=\overline{x}_{1,d}-\overline{x}_{0,d}$，则反应比例
 
 \begin{equation*}
-r_{d}=\frac{\Delta_{d}}{\Delta_{\mathrm{SiO_2}}},\quad r_{\mathrm{SiO_2}}=1
+r_{d}=\frac{\Delta_{d}}{\Delta_{\mathrm{SiO_2}}},\quad{r}_{\mathrm{SiO_2}}=1
 \end{equation*}
 
-$r_{d}< 0$ 表示风化过程中该成分相对 $\mathrm{SiO_2}$ 流失，$r_{d}> 0$ 表示相对富集。
+$r_{d}<0$ 表示风化过程中该成分相对 $\mathrm{SiO_2}$ 流失，$r_{d}>0$ 表示相对富集。
 
 
 \subsubsection{风化前成分反推}
 
-第三步，反推风化前成分。设风化引起的各成分变化按反应比例成比例迁移，即 $\Delta x_{d}=r_{d}\Delta x_{\mathrm{SiO_2}}$；将回归式写成关于 $\Delta x_{\mathrm{SiO_2}}$ 的线性增量并与风化程度 $Y_i$ 对应，可解出 $\mathrm{SiO_2}$ 的变化量，进而还原各成分风化前含量估计 $\widehat{x}_{id}$
+第三步，反推风化前成分。设风化引起的各成分变化按反应比例成比例迁移，即 $\Delta{x}_{d}=r_{d}\Delta{x}_{\mathrm{SiO_2}}$；将回归式写成关于 $\Delta{x}_{\mathrm{SiO_2}}$ 的线性增量并与风化程度 $Y_i$ 对应，可解出 $\mathrm{SiO_2}$ 的变化量，进而还原各成分风化前含量估计 $\widehat{x}_{id}$
 
 \begin{equation*}
-\widehat{x}_{id}=x_{id}-\frac{r_{d}}{A}Y_i,\quad A=\beta_{\mathrm{SiO_2}}+\sum_{d\in\mathcal{S}\setminus\{\mathrm{SiO_2}\}}\beta_{d}r_{d}
+\widehat{x}_{id}=x_{id}-\frac{r_{d}}{A}Y_i,\quad{A}=\beta_{\mathrm{SiO_2}}+\sum_{d\in\mathcal{S}\setminus\{\mathrm{SiO_2}\}}\beta_{d}r_{d}
 \end{equation*}
 
 其中 $A$ 为反推分母。风化组中 $\mathrm{Na_2O}$、$\mathrm{PbO}$、$\mathrm{BaO}$ 等成分多数样本未检出，$r_d$ 与实测含量不可得，仅对可检出且反应比例有效的成分反推，$\mathrm{SnO_2}$、$\mathrm{SO_2}$ 等不参与。
@@ -310,7 +310,7 @@ $r_{d}< 0$ 表示风化过程中该成分相对 $\mathrm{SiO_2}$ 流失，$r_{d}
 预测合理性以标准化偏差检验：设反推所得风化前含量的均值为 $\overline{\widehat{x}}_{d}$，与无风化组均值 $\overline{x}_{0,d}$、样本标准差 $s_{0,d}$ 比较
 
 \begin{equation*}
-\frac{|\overline{\widehat{x}}_{d}-\overline{x}_{0,d}|}{s_{0,d}}< 1
+\frac{|\overline{\widehat{x}}_{d}-\overline{x}_{0,d}|}{s_{0,d}}<1
 \end{equation*}
 
 小于 $1$ 表示反推结果落在无风化组均值一倍标准差之内，预测与未风化样本分布一致。
@@ -321,7 +321,7 @@ $r_{d}< 0$ 表示风化过程中该成分相对 $\mathrm{SiO_2}$ 流失，$r_{d}
 作为对照，按熊强等（2025）的风化虚拟变量回归复核趋势方向：对风化显著相关成分 $d$，以少量低缺失成分为特征集 $\mathcal{F}_d$ 拟合
 
 \begin{equation*}
-x_{id}=\alpha_{d}+\sum_{f\in\mathcal{F}_d}\beta_{df}x_{if}+\lambda_{d}WG_i,\quad WG_i=\mathbf{1}\{Y_i> 0\}
+x_{id}=\alpha_{d}+\sum_{f\in\mathcal{F}_d}\beta_{df}x_{if}+\lambda_{d}WG_i,\quad{W}G_i=\mathbf{1}\{Y_i>0\}
 \end{equation*}
 
 其中 $WG_i$ 为风化虚拟变量，$\lambda_d$ 即风化对含量的净效应，$\alpha_d$ 为截距项、$\beta_{df}$ 为特征 $f$ 的回归系数；将风化样本的 $WG$ 置 $0$ 即得风化前预测，据此与主线 A 的升降方向、量级相互印证。
@@ -374,13 +374,13 @@ Y_{Pb}=0.7627-0.0156x_{\mathrm{SiO_2}}-0.1384x_{\mathrm{CaO}}+0.0476x_{\mathrm{A
 z_{id}=\frac{C_{id}-\overline{C}_{d}}{s_{d}}
 \end{equation*}
 
-其中 $\overline C_d$、$s_d$ 为成分 $d$ 在训练样本上的均值与样本标准差（仅在训练折内估计，避免数据泄漏）。先以 Spearman 秩相关刻画类型与各成分的单调关联方向：将 $y_i$ 与 $C_{id}$ 转为秩 $u_i$、$v_i$（并列取平均秩），得相关系数
+其中 $\overline{C}_d$、$s_d$ 为成分 $d$ 在训练样本上的均值与样本标准差（仅在训练折内估计，避免数据泄漏）。先以 Spearman 秩相关刻画类型与各成分的单调关联方向：将 $y_i$ 与 $C_{id}$ 转为秩 $u_i$、$v_i$（并列取平均秩），得相关系数
 
 \begin{equation*}
 \rho_{d}=\frac{\sum_{i}(u_{i}-\overline{u})(v_{i}-\overline{v})}{\sqrt{\sum_{i}(u_{i}-\overline{u})^{2}}\sqrt{\sum_{i}(v_{i}-\overline{v})^{2}}}
 \end{equation*}
 
-其中 $\overline u$、$\overline v$ 为属性秩与成分秩的均值；$\rho_{d}> 0$ 表示该成分随铅钡倾向升高，$\rho_{d}< 0$ 表示随高钾倾向升高（张星园等，2023）。
+其中 $\overline{u}$、$\overline{v}$ 为属性秩与成分秩的均值；$\rho_{d}>0$ 表示该成分随铅钡倾向升高，$\rho_{d}<0$ 表示随高钾倾向升高（张星园等，2023）。
 
 判别模型沿三条途径交叉构建并互为印证。
 
@@ -389,7 +389,7 @@ z_{id}=\frac{C_{id}-\overline{C}_{d}}{s_{d}}
 其一，随机森林以基尼不纯度下降度量特征重要性（刘振文等，2025）：节点 $\nu$ 的两类占比为 $\pi_0,\pi_1$，不纯度 $G\left(\nu\right)=1-\sum_{k=0}^{1}\pi_k^2$，按成分 $d$ 分裂为子节点 $\nu_L,\nu_R$ 的不纯度下降为
 
 \begin{equation*}
-\Delta G(\nu)=G(\nu)-\frac{n_{\nu_L}}{n_\nu}G(\nu_L)-\frac{n_{\nu_R}}{n_\nu}G(\nu_R),
+\Delta{G}(\nu)=G(\nu)-\frac{n_{\nu_L}}{n_\nu}G(\nu_L)-\frac{n_{\nu_R}}{n_\nu}G(\nu_R),
 \end{equation*}
 
 其中 $n_\nu$、$n_{\nu_L}$、$n_{\nu_R}$ 分别为节点 $\nu$ 及其左右子节点的样本数；将其在所有树、所有分裂点上累加并归一化即得重要性 $v_d$，据此取累计重要性达 $91.6\%$ 的前 $7$ 位成分作为判别核心成分，实现降维并剔除噪声。
@@ -399,14 +399,14 @@ z_{id}=\frac{C_{id}-\overline{C}_{d}}{s_{d}}
 其二，逻辑回归以标准化成分的线性组合经 Sigmoid 变换输出铅钡概率（钱鸿羽等，2024）
 
 \begin{equation*}
-\eta_{i}=a_{0}+\sum_{d=1}^{14}a_{d}z_{id},\quad P_{i}=\Pr(y_{i}=1\mid z_{i})=\frac{1}{1+e^{-\eta_{i}}},
+\eta_{i}=a_{0}+\sum_{d=1}^{14}a_{d}z_{id},\quad{P}_{i}=\Pr(y_{i}=1\mid{z}_{i})=\frac{1}{1+e^{-\eta_{i}}},
 \end{equation*}
 
-其中 $\eta_i$ 为标准化成分的线性组合（对数几率）、$a_0$ 为截距项；判别系数 $a_d$（表 \ref{tab:core}）为正促进判铅钡、为负促进判高钾，$P_i> 0.5$ 判为铅钡。
+其中 $\eta_i$ 为标准化成分的线性组合（对数几率）、$a_0$ 为截距项；判别系数 $a_d$（表 \ref{tab:core}）为正促进判铅钡、为负促进判高钾，$P_i>0.5$ 判为铅钡。
 
 \subsubsection{CART 决策树}
 
-其三，深度受限（深度 $3$）的 CART 决策树同样以基尼下降最大选择划分，叶节点取多数类，输出“$\mathrm{PbO}\le5.46$ 判高钾、$\mathrm{PbO}> 5.46$ 判铅钡”的可读规则（熊强等，2025）。
+其三，深度受限（深度 $3$）的 CART 决策树同样以基尼下降最大选择划分，叶节点取多数类，输出“$\mathrm{PbO}\le5.46$ 判高钾、$\mathrm{PbO}>5.46$ 判铅钡”的可读规则（熊强等，2025）。
 
 
 \subsubsection{分层 5 折交叉验证}
@@ -425,10 +425,10 @@ z_{id}=\frac{C_{id}-\overline{C}_{d}}{s_{d}}
 类型与成分的 Spearman 相关显示，铅钡玻璃与 $\mathrm{PbO}$、$\mathrm{BaO}$、$\mathrm{SrO}$ 正相关，高钾玻璃与 $\mathrm{SiO_2}$、$\mathrm{K_2O}$ 负相关。随机森林特征重要性前 $7$ 位为
 
 \begin{equation*}
-\mathrm{PbO}> \mathrm{BaO}> \mathrm{SiO_2}> \mathrm{K_2O}> \mathrm{SrO}> \mathrm{CaO}> \mathrm{Al_2O_3}
+\mathrm{PbO}>\mathrm{BaO}>\mathrm{SiO_2}>\mathrm{K_2O}>\mathrm{SrO}>\mathrm{CaO}>\mathrm{Al_2O_3}
 \end{equation*}
 
-累计重要性 $91.6\%$，折外准确率 $100\%$；逻辑回归判别系数方向与相关分析一致，折外准确率 $98.2\%$。深度 $3$ 决策树进一步提炼出极简判别规则：$\mathrm{PbO}\le5.46$ 判为高钾，$\mathrm{PbO}> 5.46$ 判为铅钡，折外准确率 $96.7\%$。可见 $\mathrm{PbO}$、$\mathrm{BaO}$ 富集是铅钡玻璃的本质特征，$\mathrm{SiO_2}$、$\mathrm{K_2O}$ 主导是高钾玻璃的本质特征，两类玻璃可由少数核心成分清晰区分。
+累计重要性 $91.6\%$，折外准确率 $100\%$；逻辑回归判别系数方向与相关分析一致，折外准确率 $98.2\%$。深度 $3$ 决策树进一步提炼出极简判别规则：$\mathrm{PbO}\le5.46$ 判为高钾，$\mathrm{PbO}>5.46$ 判为铅钡，折外准确率 $96.7\%$。可见 $\mathrm{PbO}$、$\mathrm{BaO}$ 富集是铅钡玻璃的本质特征，$\mathrm{SiO_2}$、$\mathrm{K_2O}$ 主导是高钾玻璃的本质特征，两类玻璃可由少数核心成分清晰区分。
 
 \begin{table}[htbp]
 \centering
@@ -452,7 +452,7 @@ $\mathrm{CuO}$ & $-0.235$ & $0.025$ & $-0.586$ \\
 
 注：Spearman $\rho$ 以类型编码（高钾$=0$、铅钡$=1$）计算；判别系数为正促进判为铅钡、为负促进判为高钾。
 
-表 \ref{tab:core} 显示，$\mathrm{PbO}$、$\mathrm{BaO}$ 与铅钡类型强正相关（$\rho> 0.75$）且 RF 重要性居前两位，$\mathrm{SiO_2}$、$\mathrm{K_2O}$ 与高钾类型强负相关，Logistic 判别系数方向与之一致，四者共同构成判别两类玻璃的核心成分。
+表 \ref{tab:core} 显示，$\mathrm{PbO}$、$\mathrm{BaO}$ 与铅钡类型强正相关（$\rho>0.75$）且 RF 重要性居前两位，$\mathrm{SiO_2}$、$\mathrm{K_2O}$ 与高钾类型强负相关，Logistic 判别系数方向与之一致，四者共同构成判别两类玻璃的核心成分。
 
 \begin{figure}[htbp]
 \centering
@@ -474,7 +474,7 @@ $\mathrm{CuO}$ & $-0.235$ & $0.025$ & $-0.586$ \\
 K-means 以簇内离差平方和最小为目标，将样本划分为 $K$ 个互不相交的簇 $\mathcal{G}_1,\dots,\mathcal{G}_K$，簇 $k$ 的质心 $\mu_k$ 取簇内特征均值，目标函数
 
 \begin{equation*}
-J_K=\sum_{k=1}^{K}\sum_{i\in\mathcal{G}_k}\sum_{d\in\mathcal{Q}}(z_{id}-\mu_{kd})^{2},\quad \mu_{kd}=\frac{1}{|\mathcal{G}_k|}\sum_{i\in\mathcal{G}_k}z_{id},
+J_K=\sum_{k=1}^{K}\sum_{i\in\mathcal{G}_k}\sum_{d\in\mathcal{Q}}(z_{id}-\mu_{kd})^{2},\quad\mu_{kd}=\frac{1}{|\mathcal{G}_k|}\sum_{i\in\mathcal{G}_k}z_{id},
 \end{equation*}
 
 其中 $\left|\mathcal{G}_k\right|$ 为簇 $k$ 的样本数；通过"样本分配至最近质心—按簇均值更新质心"交替迭代直至收敛。K-means++ 改进初始质心选取：依次挑选初始质心，候选样本以与已选质心最短距离的平方成正比概率被选中，以降低初始值对局部最优的影响（刘振文等，2025）。
@@ -495,7 +495,7 @@ q_{i}=\frac{\beta_{i}-\alpha_{i}}{\max(\alpha_{i},\beta_{i})},
 为检验划分不依赖特定算法，以 Ward 层次聚类作对照：从每样本一类出发，每次合并使簇内离差平方和增量
 
 \begin{equation*}
-\Delta J_{k\ell}=\frac{|\mathcal{G}_k|\,|\mathcal{G}_\ell|}{|\mathcal{G}_k|+|\mathcal{G}_\ell|}\sum_{d\in\mathcal{Q}}(\mu_{kd}-\mu_{\ell d})^{2}
+\Delta{J}_{k\ell}=\frac{|\mathcal{G}_k|\,|\mathcal{G}_\ell|}{|\mathcal{G}_k|+|\mathcal{G}_\ell|}\sum_{d\in\mathcal{Q}}(\mu_{kd}-\mu_{\ell{d}})^{2}
 \end{equation*}
 
 最小的两簇，所得树状划分应与 K-means++ 的结构一致。
@@ -569,10 +569,10 @@ t_{kd}=\frac{\overline{C}_{k,d}-\overline{C}_{d}}{s_{d}}
 
 \subsubsection{调整兰德指数（ARI）}
 
-亚类划分的合理性以调整兰德指数（ARI）衡量两种划分的一致程度：设基准划分 $U$ 与对照划分 $V$ 的交叉表元素为 $n_{ij}$，行、列合计为 $n_{i\cdot}$、$n_{\cdot j}$，则
+亚类划分的合理性以调整兰德指数（ARI）衡量两种划分的一致程度：设基准划分 $U$ 与对照划分 $V$ 的交叉表元素为 $n_{ij}$，行、列合计为 $n_{i\cdot}$、$n_{\cdot{j}}$，则
 
 \begin{equation*}
-ARI=\frac{\sum_{ij}\binom{n_{ij}}{2}-\frac{\sum_{i}\binom{n_{i\cdot}}{2}\,\sum_{j}\binom{n_{\cdot j}}{2}}{\binom{n}{2}}}{\frac{1}{2}(\sum_{i}\binom{n_{i\cdot}}{2}+\sum_{j}\binom{n_{\cdot j}}{2})-\frac{\sum_{i}\binom{n_{i\cdot}}{2}\,\sum_{j}\binom{n_{\cdot j}}{2}}{\binom{n}{2}}},
+ARI=\frac{\sum_{ij}\binom{n_{ij}}{2}-\frac{\sum_{i}\binom{n_{i\cdot}}{2}\,\sum_{j}\binom{n_{\cdot{j}}}{2}}{\binom{n}{2}}}{\frac{1}{2}(\sum_{i}\binom{n_{i\cdot}}{2}+\sum_{j}\binom{n_{\cdot{j}}}{2})-\frac{\sum_{i}\binom{n_{i\cdot}}{2}\,\sum_{j}\binom{n_{\cdot{j}}}{2}}{\binom{n}{2}}},
 \end{equation*}
 
 $ARI$ 越接近 $1$ 说明两划分越一致、结构越稳健；簇内质量以平均轮廓系数（定义见 6.2）衡量，用于比较不同特征方案。
@@ -583,7 +583,7 @@ $ARI$ 越接近 $1$ 说明两划分越一致、结构越稳健；簇内质量以
 敏感性检验对每件样本的核心成分施加同幅度乘性高斯扰动
 
 \begin{equation*}
-C'_{id}=C_{id}\,(1+\varepsilon_{id}),\quad \varepsilon_{id}\sim N(0,\delta^{2}),
+C'_{id}=C_{id}\,(1+\varepsilon_{id}),\quad\varepsilon_{id}\sim{N}(0,\delta^{2}),
 \end{equation*}
 
 $\delta$ 取 $5\%$、$10\%$，每次扰动后按 6.2 流程重聚类并重复 $100$ 次，以扰动前后划分的 ARI 度量结构稳定性（熊强等，2025 的思路：扰动后仍归原类即表明鲁棒）；同时将类数改为 $K\pm1$ 重聚类并以 ARI 比较，以核心 $7$ 成分、全部 $14$ 成分与 CLR 对数比变量三套特征分别聚类并比较平均轮廓系数，综合判断亚类划分是否依赖实现细节、结果是否稳健。
@@ -608,10 +608,10 @@ $\delta$ 取 $5\%$、$10\%$，每次扰动后按 6.2 流程重聚类并重复 $1
 判别以逻辑回归输出为主：对未知样本 $i$，以标准化成分 $z_{id}$ 计算铅钡概率（同 6.1）
 
 \begin{equation*}
-P_i=\frac{1}{1+e^{-\eta_i}},\quad \eta_{i}=a_{0}+\sum_{d=1}^{14}a_{d}z_{id},
+P_i=\frac{1}{1+e^{-\eta_i}},\quad\eta_{i}=a_{0}+\sum_{d=1}^{14}a_{d}z_{id},
 \end{equation*}
 
-$P_i> 0.5$ 判为铅钡；随机森林与深度决策树给出类别投票，三模型多数表决得最终类别，置信度 $\left|P_i-0.5\right|\times2$ 反映判据强弱。
+$P_i>0.5$ 判为铅钡；随机森林与深度决策树给出类别投票，三模型多数表决得最终类别，置信度 $\left|P_i-0.5\right|\times2$ 反映判据强弱。
 
 
 \subsubsection{风化样本的假设-验证判别}
@@ -637,7 +637,7 @@ $P_i> 0.5$ 判为铅钡；随机森林与深度决策树给出类别投票，三
 对无风化样本，判别输入即观测成分。设逻辑回归给出的铅钡概率为 $P_i$（同 7.1），随机森林与决策树各投一票，则样本类别与置信度分别为
 
 \begin{equation*}
-\widehat y_i=\begin{cases}\text{铅钡},&P_i> 0.5,\\\text{高钾},&P_i\le0.5,\end{cases}\quad c_i=|P_i-0.5|\times2,
+\widehat{y}_i=\begin{cases}\text{铅钡},&P_i>0.5,\\\text{高钾},&P_i\le0.5,\end{cases}\quad{c}_i=|P_i-0.5|\times2,
 \end{equation*}
 
 $c_i\in\left[0,1\right]$ 反映概率偏离判界 $0.5$ 的程度，越大判别越可信；三模型多数表决作为最终类别的一致性依据。
@@ -673,7 +673,7 @@ A8 & 无风化 & $0.91$ & — & — & 铅钡 & $0.83$ \\
 \end{tabular}}
 \end{table}
 
-注：判别概率为逻辑回归输出的 P(铅钡)，P(铅钡)$> 0.5$ 判为铅钡；"—"表示无风化样本不做还原，或关键成分缺失、还原结果超出物理范围导致假设不可行；置信度 $=\left|P-0.5\right|\times2$。
+注：判别概率为逻辑回归输出的 P(铅钡)，P(铅钡)$>0.5$ 判为铅钡；"—"表示无风化样本不做还原，或关键成分缺失、还原结果超出物理范围导致假设不可行；置信度 $=\left|P-0.5\right|\times2$。
 
 表 \ref{tab:unknown} 显示，A1、A6、A7 判为高钾，A2、A3、A4、A5、A8 判为铅钡。未风化样本 A1、A3、A4、A8 的成分即为风化前近似，直接判别置信度均不低于 $0.72$；风化样本 A6、A7 的高钾假设还原完全自洽，还原后 $\mathrm{SiO_2}$ 约 $58\%$、$\mathrm{K_2O}$ 约 $12.7\%$，与未风化高钾样本画像一致，置信度超过 $0.97$；A2、A5 的检出成分过少或还原结果超出物理范围，假设-验证不可行，但直接判别三模型投票一致且置信度高于 $0.78$，结论可靠。
 
@@ -700,13 +700,13 @@ A8 & 无风化 & $0.91$ & — & — & 铅钡 & $0.83$ \\
 判别输入的稳健性以乘性高斯扰动检验：对第 $i$ 件未知样本第 $d$ 种成分含量施加扰动
 
 \begin{equation*}
-C'_{id}=C_{id}\,(1+\varepsilon_{id}),\quad \varepsilon_{id}\sim N(0,\delta^{2}),
+C'_{id}=C_{id}\,(1+\varepsilon_{id}),\quad\varepsilon_{id}\sim{N}(0,\delta^{2}),
 \end{equation*}
 
-$\delta$ 取 $5\%$ 与 $10\%$，每次扰动后重新标准化并判别，重复 $100$ 次；记基准判别为 $\widehat y_i$、第 $m$ 次扰动判别为 $\widehat y_i^{\left(m\right)}$，则该样本的类别翻转率为
+$\delta$ 取 $5\%$ 与 $10\%$，每次扰动后重新标准化并判别，重复 $100$ 次；记基准判别为 $\widehat{y}_i$、第 $m$ 次扰动判别为 $\widehat{y}_i^{\left(m\right)}$，则该样本的类别翻转率为
 
 \begin{equation*}
-f_i=\frac{1}{100}\sum_{m=1}^{100}\mathrm{1}\big\{\widehat y_i^{(m)}\neq \widehat y_i\big\},
+f_i=\frac{1}{100}\sum_{m=1}^{100}\mathrm{1}\big\{\widehat{y}_i^{(m)}\neq\widehat{y}_i\big\},
 \end{equation*}
 
 $f_i=0$ 表示扰动始终不改变判别结果，说明判别对成分测量误差稳健；结合判别概率远离 $0.5$（置信度 $c_i$ 高）与文献判别的一致性，即可认定未知样品鉴别结论稳健可靠。
