@@ -26,7 +26,7 @@ states-python/
 
 ## Method pipeline (from the paper)
 
-《基于成分数据建模与多模型融合的古代玻璃制品成分分析与鉴别》 — *"Composition analysis and identification of ancient glass artifacts based on compositional data modeling and multi-model fusion"*:
+"基于成分数据建模与多模型融合的古代玻璃制品成分分析与鉴别" — *"Composition analysis and identification of ancient glass artifacts based on compositional data modeling and multi-model fusion"*:
 
 1. **Filtering** — keep samples whose component sums fall in 85%–105%;
 2. **SVR imputation** for missing composition values;
