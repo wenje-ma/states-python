@@ -30,9 +30,9 @@
 - 空事件 $\Pr\left(\emptyset\right)=0$;
 - **可加性**: 对 N 个互不相交的事件 $A_1,A_2,\ldots,A_N$, 有
 
-$$\Pr\left(A_{1}\cup{A}_{2}\cup\cdots\cup{A}_{N}\right)=\sum_{i=1}^{N}\Pr\left(A_{i}\right).$$
+$$\Pr\left(A_{1}\cup{}A_{2}\cup\cdots\cup{}A_{N}\right)=\sum_{i=1}^{N}\Pr\left(A_{i}\right).$$
 
-对无穷可数的互不相交事件仍然成立. 特别地, 对两个不相交事件 A 和 B, $\Pr\left(A\cup{B}\right)=\Pr\left(A\right)+\Pr\left(B\right)$.
+对无穷可数的互不相交事件仍然成立. 特别地, 对两个不相交事件 A 和 B, $\Pr\left(A\cup{}B\right)=\Pr\left(A\right)+\Pr\left(B\right)$.
 
 掷骰子例子:
 
@@ -42,22 +42,22 @@ $$\Pr\left(A_{1}\cup{A}_{2}\cup\cdots\cup{A}_{N}\right)=\sum_{i=1}^{N}\Pr\left(A
 
 ## 条件概率
 
-条件概率指的是: 对于两个事件 A 和 B, 若事件 B 已经发生, 事件 A 发生的概率大小, 记作 $\Pr\left(A\mid{B}\right)$. 定义依赖于概率:
+条件概率指的是: 对于两个事件 A 和 B, 若事件 B 已经发生, 事件 A 发生的概率大小, 记作 $\Pr\left(A\mid{}B\right)$. 定义依赖于概率:
 
-$$\Pr\left(A\mid{B}\right)=\frac{\Pr\left(A\cap{B}\right)}{\Pr\left(B\right)}\tag{1}$$
+$$\Pr\left(A\mid{}B\right)=\frac{\Pr\left(A\cap{}B\right)}{\Pr\left(B\right)}\tag{1}$$
 
-- $A\mid{B}$: 在事件 B 发生的情况下的事件 A;
-- $A\cap{B}$ (也可写成 AB): 事件 A 和 B 的交, 即同时发生; $\Pr\left(A\cap{B}\right)$ 也称为**联合概率**;
+- $A\mid{}B$: 在事件 B 发生的情况下的事件 A;
+- $A\cap{}B$ (也可写成 AB): 事件 A 和 B 的交, 即同时发生; $\Pr\left(A\cap{}B\right)$ 也称为**联合概率**;
 - 公式含义: 在事件 B 发生的情况下发生事件 A 的概率, 等于事件 A 和 B 同时发生的概率除以事件 B 发生的概率.
 
 **掷骰子例子**: 事件 A = "出现点数为 $\left\{3,4,5\right\}$ 中的一个", 事件 B = "出现点数为 $\left\{2,3,4\right\}$ 中的一个".
 
-- $\Pr\left(A\cap{B}\right)=\Pr\left(\left\{\text{出现点数为~3~或者~4}\right\}\right)=1/3$;
+- $\Pr\left(A\cap{}B\right)=\Pr\left(\left\{\text{出现点数为~3~或者~4}\right\}\right)=1/3$;
 - $\Pr\left(B\right)=\Pr\left(\left\{\text{出现点数为~2,3,4~的一个}\right\}\right)=1/2$;
 
-因此 $\Pr\left(A\mid{B}\right)=2/3$, 即在已知点数为 $\left\{2,3,4\right\}$ 中一个的情况下, 点数其实是 $\left\{3,4,5\right\}$ 中一个的概率为 2/3.
+因此 $\Pr\left(A\mid{}B\right)=2/3$, 即在已知点数为 $\left\{2,3,4\right\}$ 中一个的情况下, 点数其实是 $\left\{3,4,5\right\}$ 中一个的概率为 2/3.
 
-**韦恩图理解**: $\Pr\left(A\mid{B}\right)$ 为在圆 B 的范围内发生事件 A 的可能性, 即 AB 的面积除以 B 的面积.
+**韦恩图理解**: $\Pr\left(A\mid{}B\right)$ 为在圆 B 的范围内发生事件 A 的可能性, 即 AB 的面积除以 B 的面积.
 
 ```python
 # 韦恩图（需安装 matplotlib-venn）
@@ -71,7 +71,7 @@ v.get_label_by_id('01').set_text('B')
 
 ### 重要说明
 
-- **不对空事件取条件**, 条件概率公式中分母的取值范围是 $\left(0,1\right]$, 不可能取到 0; 因此条件概率 $\Pr\left(A\mid{B}\right)$ 大于或等于联合概率 $\Pr\left(AB\right)$;
+- **不对空事件取条件**, 条件概率公式中分母的取值范围是 $\left(0,1\right]$, 不可能取到 0; 因此条件概率 $\Pr\left(A\mid{}B\right)$ 大于或等于联合概率 $\Pr\left(AB\right)$;
 - **为什么要除以 $\Pr\left(B\right)$**: 在已知事件 B 发生的条件下, 考虑的可能性空间缩小到了事件 B 发生的范围内, 然后将该范围内 A 发生的可能性除以 B 发生的可能性;
 - **所有的概率本质上都是条件概率**: 概率可以看成给定全事件后的条件概率. 谈概率时总是存在这样或那样的模型, 假设或条件 (如抛硬币正面概率为 1/2 取决于对硬币无偏性的假设).
 
@@ -154,13 +154,13 @@ $\Pr\left(\text{香草}\mid\text{碗1}\right)=30/40=3/4$ 容易计算, 但我们
 
 考虑两个互不相交的事件 $A_1$ (抽到碗 1), $A_2$ (抽到碗 2), 其并构成全事件 $\Omega$; 事件 B 表示观察到的事件 (取到香草曲奇饼). 贝叶斯公式:
 
-$$\Pr\left(A_{1}\mid{B}\right)=\frac{\Pr\left(A_{1}\right)\Pr\left(B\mid{A}_{1}\right)}{\Pr\left(A_{1}\right)\Pr\left(B\mid{A}_{1}\right)+\Pr\left(A_{2}\right)\Pr\left(B\mid{A}_{2}\right)}.$$
+$$\Pr\left(A_{1}\mid{}B\right)=\frac{\Pr\left(A_{1}\right)\Pr\left(B\mid{}A_{1}\right)}{\Pr\left(A_{1}\right)\Pr\left(B\mid{}A_{1}\right)+\Pr\left(A_{2}\right)\Pr\left(B\mid{}A_{2}\right)}.$$
 
 - $\Pr\left(A_1\right)=1/2$ (随机公平选碗);
-- $\Pr\left(B\mid{A}_1\right)=3/4$ (从碗 1 拿香草的概率);
-- $\Pr\left(B\mid{A}_2\right)=1/2$ (从碗 2 拿香草的概率).
+- $\Pr\left(B\mid{}A_1\right)=3/4$ (从碗 1 拿香草的概率);
+- $\Pr\left(B\mid{}A_2\right)=1/2$ (从碗 2 拿香草的概率).
 
-$$\Pr\left(A_{1}\mid{B}\right)=\frac{3}{5}.$$
+$$\Pr\left(A_{1}\mid{}B\right)=\frac{3}{5}.$$
 
 即香草曲奇饼来自碗 1 的概率为 0.6, 来自碗 1 比来自碗 2 的可能性更大一点.
 
@@ -168,22 +168,22 @@ $$\Pr\left(A_{1}\mid{B}\right)=\frac{3}{5}.$$
 
 一般地, 对 K 个互不相交的事件 $A_1,\ldots,A_K$ 且它们组成全事件 $\Omega$, 对某一事件 B:
 
-$$\Pr\left(A_{1}\mid{B}\right)=\Pr\left(A_{1}\right)\Pr\left(B\mid{A}_{1}\right)\left/\sum_{k=1}^{K}\Pr\left(A_{k}\right)\Pr\left(B\mid{A}_{k}\right).\right.$$
+$$\Pr\left(A_{1}\mid{}B\right)=\Pr\left(A_{1}\right)\Pr\left(B\mid{}A_{1}\right)\left/\sum_{k=1}^{K}\Pr\left(A_{k}\right)\Pr\left(B\mid{}A_{k}\right).\right.$$
 
 该公式由英格兰数学家托马斯·贝叶斯 (Thomas Bayes, 1702-1761) 提出, 因此叫**贝叶斯公式**.
 
 - $\Pr\left(A_k\right)$: **先验概率 (prior probability) **;
-- $\Pr\left(A_k\mid{B}\right)$: **后验概率 (posterior probability) **.
+- $\Pr\left(A_k\mid{}B\right)$: **后验概率 (posterior probability) **.
 
 ### 疾病检测案例
 
 人群中染上某种疾病的概率是 0.1%; 诊断将实际患病人正确诊断为患病的概率是 80%, 将正常人错误诊断为患病的概率是 0.05%. 问: 呈阳性结果是否可靠?
 
-设 $A_1$ 为真实患者 ($\Pr\left(A_1\right)=0.1\%$), $A_2$ 为正常人 ($\Pr\left(A_2\right)=1-0.001$); B 为诊断呈阳性. $\Pr\left(B\mid{A}_1\right)=80\%$, $\Pr\left(B\mid{A}_2\right)=0.05\%$.
+设 $A_1$ 为真实患者 ($\Pr\left(A_1\right)=0.1\%$), $A_2$ 为正常人 ($\Pr\left(A_2\right)=1-0.001$); B 为诊断呈阳性. $\Pr\left(B\mid{}A_1\right)=80\%$, $\Pr\left(B\mid{}A_2\right)=0.05\%$.
 
 计算诊断呈阳性但实际并没有患病 (即 $A_2$) 的概率:
 
-$$\Pr\left(A_{2}\mid{B}\right)=\frac{\Pr\left(B\mid{A}_{2}\right)\Pr\left(A_{2}\right)}{\Pr\left(B\mid{A}_{1}\right)\Pr\left(A_{1}\right)+\Pr\left(B\mid{A}_{2}\right)\Pr\left(A_{2}\right)}$$
+$$\Pr\left(A_{2}\mid{}B\right)=\frac{\Pr\left(B\mid{}A_{2}\right)\Pr\left(A_{2}\right)}{\Pr\left(B\mid{}A_{1}\right)\Pr\left(A_{1}\right)+\Pr\left(B\mid{}A_{2}\right)\Pr\left(A_{2}\right)}$$
 
 ```python
 0.0005 * (1 - 0.001) / (0.0005 * (1 - 0.001) + 0.8 * 0.001)
@@ -209,7 +209,7 @@ Mars 公司变更不同颜色巧克力豆的混合比例:
 | 假设 1 | 1/2 | 0.2 × 0.2 | 0.02 | 20/27 |
 | 假设 2 | 1/2 | 0.14 × 0.1 | 0.007 | 7/27 |
 
-如果假设 1 为真: 黄色豆来自 1994 年袋的概率 20%, 绿色来自 1996 年袋的概率 20%; 选择独立, 故相乘得 $\Pr\left(B\mid{A}_1\right)$. 第三列由前两列相乘, 最后一列归一化得到后验. 结论: 袋 1 是 1994 年, 袋 2 是 1996 年的概率更高 (20/27 ≈ 0.74).
+如果假设 1 为真: 黄色豆来自 1994 年袋的概率 20%, 绿色来自 1996 年袋的概率 20%; 选择独立, 故相乘得 $\Pr\left(B\mid{}A_1\right)$. 第三列由前两列相乘, 最后一列归一化得到后验. 结论: 袋 1 是 1994 年, 袋 2 是 1996 年的概率更高 (20/27 ≈ 0.74).
 
 ### Monty Hall 问题 (三门问题)
 
@@ -219,7 +219,7 @@ Mars 公司变更不同颜色巧克力豆的混合比例:
 
 **贝叶斯公式解释**: 设三个门为 a, b, c, 你选择门 a; 事件 B 表示主持人打开了门 b 且门 b 后没有车. 假设: $A_1$ 车在 a 后; $A_2$ 车在 b 后; $A_3$ 车在 c 后.
 
-|  | $\Pr\left(A_k\right)$ | $\Pr\left(B\mid{A}_k\right)$ | $\Pr\left(A_k\right)\Pr\left(B\mid{A}_k\right)$ | $\Pr\left(A_k\mid{B}\right)$ |
+|  | $\Pr\left(A_k\right)$ | $\Pr\left(B\mid{}A_k\right)$ | $\Pr\left(A_k\right)\Pr\left(B\mid{}A_k\right)$ | $\Pr\left(A_k\mid{}B\right)$ |
 |---|---|---|---|---|
 | 车在门 a 后 | 1/3 | 1/2 | 1/6 | 1/3 |
 | 车在门 b 后 | 1/3 | 0 | 0 | 0 |
@@ -233,7 +233,7 @@ Mars 公司变更不同颜色巧克力豆的混合比例:
 
 **变形**: 若主持人总是尽可能选择门 b, 只有迫不得已才选择门 c:
 
-|  | $\Pr\left(A_k\right)$ | $\Pr\left(B\mid{A}_k\right)$ | $\Pr\left(A_k\right)\Pr\left(B\mid{A}_k\right)$ | $\Pr\left(A_k\mid{B}\right)$ |
+|  | $\Pr\left(A_k\right)$ | $\Pr\left(B\mid{}A_k\right)$ | $\Pr\left(A_k\right)\Pr\left(B\mid{}A_k\right)$ | $\Pr\left(A_k\mid{}B\right)$ |
 |---|---|---|---|---|
 | 车在门 a 后 | 1/3 | 1 | 1/3 | 1/2 |
 | 车在门 b 后 | 1/3 | 0 | 0 | 0 |
@@ -285,7 +285,7 @@ plt.show()
 
 **规律**: $\mu$ 刻画均值, $\mu$ 越大钟型曲线越往右移; $\sigma$ 刻画波动范围, $\sigma$ 越大曲线越矮胖, $\sigma$ 越小曲线越瘦高.
 
-通常记为: $X\sim{N}\left(\mu,\sigma^{2}\right)\tag{4}$, 符号 $\sim$ 读作"服从于某种分布".
+通常记为: $X\sim{}N\left(\mu,\sigma^{2}\right)\tag{4}$, 符号 $\sim$ 读作"服从于某种分布".
 
 **随机变量的分类**:
 
